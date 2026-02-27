@@ -37,7 +37,13 @@ class BedrockSettings(BaseModel):
 
 
 class LLMSettings(BaseModel):
-    provider: Literal[*constants.LLM_PROVIDERS]
+    provider: Literal[
+        constants.LLM_PROVIDER_OPENAI,
+        constants.LLM_PROVIDER_OLLAMA,
+        constants.LLM_PROVIDER_GEMINI,
+        constants.LLM_PROVIDER_GROK,
+        constants.LLM_PROVIDER_BEDROCK
+    ]
     openai: OpenAISettings
     ollama: OllamaSettings
     gemini: GeminiSettings
