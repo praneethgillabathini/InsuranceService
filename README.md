@@ -270,7 +270,7 @@ All endpoints are prefixed with `/api/v1`.
 | `POST` | `/fhir/validate` | Structural validation of a FHIR bundle (error/warning/info issues) |
 | `POST` | `/fhir/bundle-summary` | Human-readable summary card from a FHIR bundle |
 
-Interactive API docs available at `http://localhost:8000/docs` (Swagger UI).
+Interactive API docs available at `http://localhost:8002/docs` (Swagger UI).
 
 ---
 
@@ -347,30 +347,20 @@ AWS_SECRET_ACCESS_KEY="..."
 - Node.js 18+
 - `pip`, `venv`, `npm`
 
-### Backend Setup
+### 1. Clone & configure secrets
 
 ```bash
 git clone <repo-url>
 cd InsuranceService
 
-python -m venv .venv
-
-# Windows
-.venv\Scripts\activate
-# macOS / Linux
-source .venv/bin/activate
-
-pip install -r requirements.txt
-
 cp .env.example .env
 # Edit .env — add the API key for your chosen LLM provider
 ```
 
-### Frontend Setup
+### 2. Frontend dependencies
 
 ```bash
-cd frontend
-npm install
+cd frontend && npm install && cd ..
 ```
 
 ---
@@ -383,20 +373,35 @@ npm install
 docker-compose up -d --build
 ```
 
-- **Backend** → `http://localhost:8000`
-- **Frontend** → `http://localhost`
+| Service | URL |
+|---|---|
+| **Frontend** | `http://localhost:8001` |
+| **Backend API** | `http://localhost:8002` |
+| **Swagger UI** | `http://localhost:8002/docs` |
 
-### Local Development
+### Local Development — One Command
 
+Each script creates the `.venv` (first run only), installs dependencies, and starts the backend with hot-reload:
+
+**Windows (PowerShell)**
+```powershell
+.\dev.ps1
+```
+> If execution policy blocks it, run once: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
+
+**macOS / Linux**
 ```bash
-# Terminal 1 — Backend (from project root, venv active)
-uvicorn app:app --reload --host 0.0.0.0 --port 8000
-
-# Terminal 2 — Frontend
-cd frontend && npm start
+chmod +x dev.sh && ./dev.sh
 ```
 
-The React dev server starts at `http://localhost:3000` and proxies all `/api/v1/*` calls to `localhost:8000`.  
+The backend starts at `http://localhost:8002`. The `.venv` is reused on subsequent runs so only changed packages are reinstalled.
+
+**Frontend** (separate terminal)
+```bash
+cd frontend && npm start
+```
+The React dev server starts at `http://localhost:3000` and proxies all `/api/v1/*` calls to `localhost:8002`.
+
 The backend runs the LLM health check on startup — it exits immediately if the configured provider is unreachable.
 
 ### Batch Processing
@@ -417,7 +422,9 @@ InsuranceService/
 ├── app.py                              # FastAPI entry point, lifespan, middleware
 ├── config.yaml                         # Non-secret configuration (LLM, Marker, PDF)
 ├── .env.example                        # Template for secrets (copy → .env)
-├── requirements.txt
+├── requirements.txt                    # All Python dependencies (single file)
+├── dev.ps1                             # One-command backend setup & run (Windows)
+├── dev.sh                              # One-command backend setup & run (macOS/Linux)
 │
 ├── config/
 │   └── insurance_fhir_mapping.json     # JSON schema template used in LLM prompt
@@ -457,7 +464,9 @@ InsuranceService/
 │   └── test_fhir_mapper.py             # Unit tests for FHIR R4 parameters
 │
 └── frontend/
-    ├── package.json                    # React app; proxy → localhost:8000
+    ├── package.json                    # React app; proxy → localhost:8002
+    ├── nginx.conf                      # Nginx config (listens :8001, proxies /api/ → backend:8002)
+    ├── Dockerfile                      # Multi-stage build — node builder + nginx:alpine
     └── src/
         ├── App.js                      # Layout, state, API wiring
         ├── index.js                    # Global CSS, keyframes, responsive grid

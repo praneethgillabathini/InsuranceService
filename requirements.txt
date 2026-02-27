@@ -5,6 +5,7 @@ transformers
 pdf2image
 uvicorn
 fastapi
+uvicorn
 python-multipart
 openai
 google-generativeai
@@ -13,4 +14,4 @@ groq
 pydantic-settings
 PyYAML
 python-dotenv
-fhir
+fhir.resources

@@ -23,8 +23,8 @@ COPY --from=builder /app/build /usr/share/nginx/html
 # Copy custom Nginx configuration to support client-side routing
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Expose port (Nginx default is 80)
-EXPOSE 80
+# Expose port
+EXPOSE 8001
 
 # Run Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
