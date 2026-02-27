@@ -270,7 +270,7 @@ All endpoints are prefixed with `/api/v1`.
 | `POST` | `/fhir/validate` | Structural validation of a FHIR bundle (error/warning/info issues) |
 | `POST` | `/fhir/bundle-summary` | Human-readable summary card from a FHIR bundle |
 
-Interactive API docs available at `http://localhost:8080/docs` (Swagger UI).
+Interactive API docs available at `http://localhost:8081/docs` (Swagger UI).
 
 ---
 
@@ -376,8 +376,8 @@ docker-compose up -d --build
 | Service | URL |
 |---|---|
 | **Frontend** | `http://localhost:8001` |
-| **Backend API** | `http://localhost:8080` |
-| **Swagger UI** | `http://localhost:8080/docs` |
+| **Backend API** | `http://localhost:8081` |
+| **Swagger UI** | `http://localhost:8081/docs` |
 
 ### Local Development — One Command
 
@@ -394,13 +394,13 @@ Each script creates the `.venv` (first run only), installs dependencies, and sta
 chmod +x dev.sh && ./dev.sh
 ```
 
-The backend starts at `http://localhost:8080`. The `.venv` is reused on subsequent runs so only changed packages are reinstalled.
+The backend starts at `http://localhost:8081`. The `.venv` is reused on subsequent runs so only changed packages are reinstalled.
 
 **Frontend** (separate terminal)
 ```bash
 cd frontend && npm start
 ```
-The React dev server starts at `http://localhost:3000` and proxies all `/api/v1/*` calls to `localhost:8080`.
+The React dev server starts at `http://localhost:3000` and proxies all `/api/v1/*` calls to `localhost:8081`.
 
 The backend runs the LLM health check on startup — it exits immediately if the configured provider is unreachable.
 
@@ -464,8 +464,8 @@ InsuranceService/
 │   └── test_fhir_mapper.py             # Unit tests for FHIR R4 parameters
 │
 └── frontend/
-    ├── package.json                    # React app; proxy → localhost:8080
-    ├── nginx.conf                      # Nginx config (listens :8001, proxies /api/ → backend:8080)
+    ├── package.json                    # React app; proxy → localhost:8081
+    ├── nginx.conf                      # Nginx config (listens :8001, proxies /api/ → backend:8081)
     ├── Dockerfile                      # Multi-stage build — node builder + nginx:alpine
     └── src/
         ├── App.js                      # Layout, state, API wiring

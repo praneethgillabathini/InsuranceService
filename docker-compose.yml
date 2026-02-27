@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: insurance-backend
-    expose:
-      - "8080"
+    ports:
+      - "8081:8081"
     environment:
       - ENV=production
     env_file:

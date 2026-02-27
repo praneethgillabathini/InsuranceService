@@ -27,5 +27,5 @@ else
     echo -e "\e[32mRequirements up to date — skipping install.\e[0m"
 fi
 
-echo -e "\e[32mStarting backend on http://localhost:8080 ...\e[0m"
-uvicorn app:app --host 0.0.0.0 --port 8080 --reload
+echo -e "\e[32mStarting backend on http://localhost:8081 ...\e[0m"
+uvicorn app:app --host 0.0.0.0 --port 8081 --reload
