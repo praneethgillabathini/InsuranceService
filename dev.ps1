@@ -21,5 +21,5 @@ if (-not (Test-Path $STAMP) -or ((Get-Item "requirements.txt").LastWriteTime -gt
     Write-Host "Requirements up to date - skipping install." -ForegroundColor Green
 }
 
-Write-Host "Starting backend on http://localhost:8081 ..." -ForegroundColor Green
-uvicorn app:app --host 0.0.0.0 --port 8081 --reload
+Write-Host "Starting backend on http://localhost:8082 ..." -ForegroundColor Green
+uvicorn app:app --host 0.0.0.0 --port 8082 --reload
