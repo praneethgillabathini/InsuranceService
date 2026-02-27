@@ -6,8 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: insurance-backend
-    ports:
-      - "8082:8082"
+    expose:
+      - "8082"
     environment:
       - ENV=production
     env_file:
@@ -22,7 +22,7 @@ services:
       dockerfile: Dockerfile
     container_name: insurance-frontend
     ports:
-      - "8081:80"
+      - "80:80"
     depends_on:
       - backend
     restart: unless-stopped
