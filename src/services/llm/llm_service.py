@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from typing import AsyncGenerator
 from openai import AsyncOpenAI, APIError
 
 import google.generativeai as genai
@@ -14,14 +13,11 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+
 class LLMService(ABC):
 
-
     @abstractmethod
-    async def process_text(
-        self, system_prompt: str, user_prompt: str
-    ) -> str:
-
+    async def process_text(self, system_prompt: str, user_prompt: str) -> str:
         raise NotImplementedError
 
 
@@ -40,9 +36,7 @@ class _OpenAICompatibleService(LLMService):
     def _get_model_name(self) -> str:
         raise NotImplementedError
 
-    async def process_text(
-        self, system_prompt: str, user_prompt: str
-    ) -> str:
+    async def process_text(self, system_prompt: str, user_prompt: str) -> str:
         try:
             response = await self.client.chat.completions.create(
                 model=self.model,
@@ -78,9 +72,7 @@ class OllamaLLMService(_OpenAICompatibleService):
 class GrokLLMService(_OpenAICompatibleService):
 
     def _create_client(self) -> AsyncOpenAI:
-        return AsyncOpenAI(
-            base_url="https://api.groq.com/openai/v1", api_key=settings.grok_api_key
-        )
+        return AsyncOpenAI(base_url=settings.llm.grok.base_url, api_key=settings.grok_api_key)
 
     def _get_model_name(self) -> str:
         return settings.llm.grok.model_name
@@ -89,14 +81,11 @@ class GrokLLMService(_OpenAICompatibleService):
 class GeminiLLMService(LLMService):
 
     def __init__(self):
-
         logger.info(constants.LOG_LLM_SERVICE_INIT.format(service_name=self.__class__.__name__))
         genai.configure(api_key=settings.google_api_key)
         self.model_name = settings.llm.gemini.model_name
 
-    async def process_text(
-        self, system_prompt: str, user_prompt: str
-    ) -> str:
+    async def process_text(self, system_prompt: str, user_prompt: str) -> str:
         try:
             model = genai.GenerativeModel(model_name=self.model_name, system_instruction=system_prompt)
             response = await model.generate_content_async(user_prompt, stream=False)
@@ -104,7 +93,6 @@ class GeminiLLMService(LLMService):
         except (google_exceptions.GoogleAPICallError, grpc.aio.AioRpcError) as e:
             error_message = constants.LOG_LLM_API_CALL_FAILED.format(service_name=self.__class__.__name__, error=e)
             logger.error(error_message)
-
             raise RuntimeError(constants.ERROR_MESSAGE_LLM_API_ERROR) from e
 
 
@@ -113,6 +101,9 @@ class BedrockLLMService(LLMService):
     def __init__(self):
         logger.info(constants.LOG_LLM_SERVICE_INIT.format(service_name=self.__class__.__name__))
         self.model_id = settings.llm.bedrock.model_id
+        self.anthropic_version = settings.llm.bedrock.anthropic_version
+        self.max_tokens = settings.llm.bedrock.max_tokens
+        self.temperature = settings.llm.bedrock.temperature
         self.client = boto3.client(
             service_name="bedrock-runtime",
             region_name=settings.llm.bedrock.region_name,
@@ -120,26 +111,21 @@ class BedrockLLMService(LLMService):
             aws_secret_access_key=settings.aws_secret_access_key,
         )
 
-    async def process_text(
-        self, system_prompt: str, user_prompt: str
-    ) -> str:
+    async def process_text(self, system_prompt: str, user_prompt: str) -> str:
         loop = asyncio.get_running_loop()
         try:
             body = json.dumps({
-                "anthropic_version": "bedrock-2023-05-31",
-                "max_tokens": 4096,
+                "anthropic_version": self.anthropic_version,
+                "max_tokens": self.max_tokens,
                 "system": system_prompt,
-                "temperature": 0.0,
+                "temperature": self.temperature,
                 "messages": [{"role": "user", "content": [{"type": "text", "text": user_prompt}]}]
             })
-
             response = await loop.run_in_executor(
                 None, lambda: self.client.invoke_model(body=body, modelId=self.model_id)
             )
-
             response_body = json.loads(response.get("body").read())
             return response_body.get("content")[0].get("text")
-
         except Exception as e:
             error_message = constants.LOG_LLM_API_CALL_FAILED.format(service_name=self.__class__.__name__, error=e)
             logger.error(error_message)
