@@ -1,0 +1,555 @@
+{
+  "resourceType": "Bundle",
+  "id": "d362b721-b624-4a8c-9a41-0afc1ef99bfa",
+  "language": "en-IN",
+  "type": "collection",
+  "timestamp": "2026-02-27T09:33:12.704460Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:54554e3c-7235-4366-a239-62d6b56e6199",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "54554e3c-7235-4366-a239-62d6b56e6199",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.irdai.gov.in/identifier/insurer",
+            "value": "urn:uuid:4dce1413-d70b-4bd6-acab-d7a18948dd24"
+          }
+        ],
+        "name": "Edelweiss General Insurance Company Limited",
+        "contact": [
+          {
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "180012000"
+              },
+              {
+                "system": "email",
+                "value": "support@edelweissinsurance.com"
+              },
+              {
+                "system": "url",
+                "value": "www.edelweissinsurance.com"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:ea28a5ac-7409-4737-9c48-45abb0c89f2d",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "ea28a5ac-7409-4737-9c48-45abb0c89f2d",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.irdai.gov.in/identifier/tpa",
+            "value": "urn:uuid:3d9c366b-1dcf-402c-87cf-7ca55fd39b68"
+          }
+        ],
+        "name": "Unknown"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:02876dc6-fad5-46f4-8774-8e14884d43fd",
+      "resource": {
+        "resourceType": "InsurancePlan",
+        "id": "02876dc6-fad5-46f4-8774-8e14884d43fd",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlan"
+          ]
+        },
+        "language": "en-IN",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Insurance Plan: Corona Rakshak Policy. Status: active.</p></div>"
+        },
+        "extension": [
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "POI",
+                      "display": "Proof of Identity"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "document",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "PAS",
+                      "display": "Passport"
+                    }
+                  ]
+                }
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "POI",
+                      "display": "Proof of Identity"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "document",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "Photo Identity proof"
+                    }
+                  ]
+                }
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "POI",
+                      "display": "Proof of Identity"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "document",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "KYC",
+                      "display": "KYC (Identity proof with Address)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "POA",
+                      "display": "Proof of Address"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "document",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "KYC",
+                      "display": "KYC (Identity proof with Address)"
+                    }
+                  ]
+                }
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "Excl04",
+                      "display": "Investigation & Evaluation"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Expenses related to any admission primarily for diagnostics and evaluation purposes."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "Excl04",
+                      "display": "Investigation & Evaluation"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Any diagnostic expenses which are not related or not incidental to the current diagnosis and treatment."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "Diagnosis Not Related to COVID"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Any diagnosis which is not related and not incidental to COVID is not covered in this Policy."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "Unauthorized Diagnostic Centre"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Testing done at a Diagnostic centre which is not authorized by the Government shall not be recognized under this Policy."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "Excl02",
+                      "display": "Waiting Period"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Any claim with respect to COVID manifested prior to commencement date of this policy or during the waiting period."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "Travel Restriction"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Cover under this Policy shall cease if the Insured Person travels to any country placed under travel restriction by the Government of India."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "Excl02",
+                      "display": "Waiting Period"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "The Company shall not be liable for any claim arising for COVID within 15 days from the first policy commencement date."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "system": "http://code.workz.com",
+            "value": "urn:uuid:02268860-d450-4ec1-911c-9407938b08c3"
+          }
+        ],
+        "status": "active",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-insuranceplan-type",
+                "code": "Unknown",
+                "display": "Benefit based"
+              }
+            ]
+          }
+        ],
+        "name": "Corona Rakshak Policy",
+        "alias": [],
+        "ownedBy": {
+          "reference": "urn:uuid:54554e3c-7235-4366-a239-62d6b56e6199"
+        },
+        "administeredBy": {
+          "reference": "urn:uuid:ea28a5ac-7409-4737-9c48-45abb0c89f2d"
+        },
+        "coverageArea": [
+          {
+            "display": "India"
+          }
+        ],
+        "contact": [
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "Customer Service",
+                  "display": "Customer Service"
+                }
+              ],
+              "text": "Customer Service"
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "180012000"
+              },
+              {
+                "system": "email",
+                "value": "support@edelweissinsurance.com"
+              }
+            ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "Grievance",
+                  "display": "Grievance"
+                }
+              ],
+              "text": "Grievance"
+            },
+            "name": [
+              {
+                "text": "Grievance Cell"
+              }
+            ],
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "1800120216216"
+              },
+              {
+                "system": "email",
+                "value": "grievance@edelweissinsurance.com"
+              }
+            ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "Grievance Redressal Officer",
+                  "display": "Grievance Redressal Officer"
+                }
+              ],
+              "text": "Grievance Redressal Officer"
+            },
+            "telecom": [
+              {
+                "system": "email",
+                "value": "grievanceofficer@edelweissinsurance.com"
+              }
+            ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "IRDAI Grievance Call Centre",
+                  "display": "IRDAI Grievance Call Centre"
+                }
+              ],
+              "text": "IRDAI Grievance Call Centre"
+            },
+            "name": [
+              {
+                "text": "IGCC"
+              }
+            ],
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "155255"
+              },
+              {
+                "system": "email",
+                "value": "complaints@irda.gov.in"
+              }
+            ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "Governing Body of Insurance Council",
+                  "display": "Governing Body of Insurance Council"
+                }
+              ],
+              "text": "Governing Body of Insurance Council"
+            },
+            "name": [
+              {
+                "text": "Secretary General/Secretary"
+              }
+            ],
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "022-26106245"
+              },
+              {
+                "system": "email",
+                "value": "inscoun@ecoi.co.in"
+              }
+            ]
+          }
+        ],
+        "coverage": [
+          {
+            "extension": [
+              {
+                "extension": [
+                  {
+                    "url": "statement",
+                    "valueString": "Lump sum benefit equal to 100% of the Sum Insured shall be payable on positive diagnosis of COVID, requiring hospitalization for a minimum continuous period of 72 hours. The positive diagnosis of COVID shall be from a government authorized diagnostic centre."
+                  }
+                ],
+                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
+              }
+            ],
+            "type": {
+              "coding": [
+                {
+                  "display": "COVID Cover"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "Lump Sum COVID Hospitalization Benefit"
+                    }
+                  ]
+                },
+                "limit": [
+                  {
+                    "value": {
+                      "value": 100.0,
+                      "unit": "% of Sum Insured"
+                    },
+                    "code": {
+                      "coding": [
+                        {
+                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
+                          "code": "benefit",
+                          "display": "100 % of Sum Insured"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "plan": [
+          {
+            "identifier": [
+              {
+                "use": "official",
+                "system": "http://code.workz.com",
+                "value": "urn:uuid:1ce2c20a-f186-4a7a-94ba-7a6330535f8a"
+              }
+            ],
+            "type": {
+              "coding": [
+                {
+                  "system": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-plan-type",
+                  "code": "01",
+                  "display": "Individual"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

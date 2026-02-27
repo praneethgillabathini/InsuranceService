@@ -1,0 +1,2558 @@
+{
+  "resourceType": "Bundle",
+  "id": "bd144cb8-ffc7-4702-bda7-02b85af12f8c",
+  "language": "en-IN",
+  "type": "collection",
+  "timestamp": "2026-02-27T09:32:44.670331Z",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:65508dd9-70a0-4d8c-baa2-565f4259920e",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "65508dd9-70a0-4d8c-baa2-565f4259920e",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.irdai.gov.in/identifier/insurer",
+            "value": "urn:uuid:6bd10cc4-869a-4660-b5e1-f95cfedd0ea1"
+          }
+        ],
+        "name": "Bajaj Allianz General Insurance Co. Ltd.",
+        "contact": [
+          {
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "Sales - 1800 209 0144 / Service - 1800 209 5858 (Toll Free No.)"
+              },
+              {
+                "system": "email",
+                "value": "bagichelp@bajajallianz.co.in"
+              },
+              {
+                "system": "url",
+                "value": "www.bajajallianz.com"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:32e4ad44-3eed-4210-b4f7-bafd7a013c25",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "32e4ad44-3eed-4210-b4f7-bafd7a013c25",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "system": "https://www.irdai.gov.in/identifier/tpa",
+            "value": "urn:uuid:32a98eaa-e155-417f-a44f-51eeece40465"
+          }
+        ],
+        "name": "Unknown"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:31273fbf-6762-47e0-965d-29c3a85d7084",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "31273fbf-6762-47e0-965d-29c3a85d7084",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider Network"
+              }
+            ]
+          }
+        ],
+        "name": "Bajaj Allianz Network"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5fa2573c-2bb5-46d1-9345-d03ade51cf9a",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "5fa2573c-2bb5-46d1-9345-d03ade51cf9a",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider Network"
+              }
+            ]
+          }
+        ],
+        "name": "Digital Platform of Service Provider"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:5a22f719-afaf-4023-9565-9460efda7585",
+      "resource": {
+        "resourceType": "InsurancePlan",
+        "id": "5a22f719-afaf-4023-9565-9460efda7585",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlan"
+          ]
+        },
+        "language": "en-IN",
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Insurance Plan: HEALTH PRIME. Status: active.</p></div>"
+        },
+        "extension": [
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "Excl02",
+                      "display": "Waiting Period"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Initial 30 days waiting period is applicable on teleconsultation required for illness during the first year of Rider Period. This waiting period is not applicable for renewals without break."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "Excl02",
+                      "display": "Waiting Period"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Initial 30 days waiting period is applicable for consultation required for illness during the first year of this Rider. This waiting period is not applicable for renewals without break."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "Excl02",
+                      "display": "Waiting Period"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Initial 30 days waiting period is applicable for investigations Cover- Pathology & Radiology expenses related to illness during the first year of Rider. This waiting period is not applicable for renewals without break."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "code": "Excl02",
+                      "display": "Waiting Period"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Initial 30 days waiting period is applicable for investigations related to illness during the first year of Rider Period. This waiting period is not applicable for renewals without break."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "General Exclusions"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Tele consultation outside the Digital platform of service provider’s application/website video/audio/chat consultation, in-clinic/physical consultation is not covered under the Rider."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "General Exclusions"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Teleconsultation benefit is not transferrable to any other member unless the member is covered under the Base Policy & has opted this Rider."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "General Exclusions"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "If the Tele Consultation is not availed in the policy year during the Rider Period, the benefit cannot be carried forward to the subsequent policy year during the Rider Period."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "General Exclusions"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Reimbursement of teleconsultation benefit is not covered."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "General Exclusions"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Other expenses of investigations, medicines, procedures or any medical, non-medical items are not covered."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "General Exclusions"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "If the Doctor Consultation cover is not availed in the policy year the benefit cannot be carried forward to the subsequent policy year after renewal."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "General Exclusions"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "If the Investigation cover is not availed in the respective policy year the benefit cannot be carried forward to the subsequent policy year after renewal."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "General Exclusions"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Preventive health check-up cannot be availed outside the prescribed list of hospitals or diagnostic centers."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "General Exclusions"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Home collection facility will available only at selected locations. For locations where home sample collection is not available, the customer will have to physically go and take the tests."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "General Exclusions"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "The complete list of tests as given above has to be completed in a single appointment."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "General Exclusions"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "If the health check-up is not availed in the policy year during the Rider Period the benefit cannot be carried forward to the subsequent policy year during the Rider Period after renewal."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          },
+          {
+            "extension": [
+              {
+                "url": "category",
+                "valueCodeableConcept": {
+                  "coding": [
+                    {
+                      "display": "General Exclusions"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "statement",
+                "valueString": "Reimbursement of preventive health check-up expenses is excluded from the scope of the Rider."
+              }
+            ],
+            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
+          }
+        ],
+        "identifier": [
+          {
+            "use": "official",
+            "system": "http://code.workz.com",
+            "value": "urn:uuid:eb64f421-9771-4e46-9b97-520cdf21e5d9"
+          }
+        ],
+        "status": "active",
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-insuranceplan-type",
+                "code": "01",
+                "display": "Hospitalisation Indemnity"
+              }
+            ]
+          }
+        ],
+        "name": "HEALTH PRIME",
+        "alias": [
+          "Rider for Health Products"
+        ],
+        "ownedBy": {
+          "reference": "urn:uuid:65508dd9-70a0-4d8c-baa2-565f4259920e"
+        },
+        "administeredBy": {
+          "reference": "urn:uuid:32e4ad44-3eed-4210-b4f7-bafd7a013c25"
+        },
+        "coverageArea": [
+          {
+            "display": "India"
+          }
+        ],
+        "contact": [
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "Sales Helpline",
+                  "display": "Sales Helpline"
+                }
+              ],
+              "text": "Sales Helpline"
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "1800 209 0144"
+              }
+            ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "Service Helpline",
+                  "display": "Service Helpline"
+                }
+              ],
+              "text": "Service Helpline"
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "1800 209 5858"
+              }
+            ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "Customer Service Helpline",
+                  "display": "Customer Service Helpline"
+                }
+              ],
+              "text": "Customer Service Helpline"
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "020-30305858"
+              }
+            ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "WhatsApp Service",
+                  "display": "WhatsApp Service"
+                }
+              ],
+              "text": "WhatsApp Service"
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+91 7507245858"
+              }
+            ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "General Customer Service Email",
+                  "display": "General Customer Service Email"
+                }
+              ],
+              "text": "General Customer Service Email"
+            },
+            "name": [
+              {
+                "text": "Level 1"
+              }
+            ],
+            "telecom": [
+              {
+                "system": "email",
+                "value": "bagichelp@bajajallianz.co.in"
+              }
+            ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "Senior Citizen Customer Service Email",
+                  "display": "Senior Citizen Customer Service Email"
+                }
+              ],
+              "text": "Senior Citizen Customer Service Email"
+            },
+            "name": [
+              {
+                "text": "Level 1 Senior Citizen"
+              }
+            ],
+            "telecom": [
+              {
+                "system": "email",
+                "value": "seniorcitizen@bajajallianz.co.in"
+              }
+            ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "Grievance Redressal Officer Email",
+                  "display": "Grievance Redressal Officer Email"
+                }
+              ],
+              "text": "Grievance Redressal Officer Email"
+            },
+            "name": [
+              {
+                "text": "Level 2 Grievance Redressal Officer"
+              }
+            ],
+            "telecom": [
+              {
+                "system": "email",
+                "value": "ggro@bajajallianz.co.in"
+              }
+            ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "Care Specialist Call Back Service",
+                  "display": "Care Specialist Call Back Service"
+                }
+              ],
+              "text": "Care Specialist Call Back Service"
+            },
+            "name": [
+              {
+                "text": "Level 3 Care Specialist"
+              }
+            ],
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "+91 80809 45060"
+              }
+            ]
+          }
+        ],
+        "network": [
+          {
+            "reference": "urn:uuid:31273fbf-6762-47e0-965d-29c3a85d7084",
+            "display": "Bajaj Allianz Network"
+          },
+          {
+            "reference": "urn:uuid:5fa2573c-2bb5-46d1-9345-d03ade51cf9a",
+            "display": "Digital Platform of Service Provider"
+          }
+        ],
+        "coverage": [
+          {
+            "type": {
+              "coding": [
+                {
+                  "display": "Tele Consultation Cover"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "Tele Consultation (GPs/All Specialties)"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "display": "Investigations Cover – Pathology & Radiology Cover"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "Pathology & Radiology Expenses"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "display": "Doctor Consultation Cover"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "Doctor Consultation"
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "type": {
+              "coding": [
+                {
+                  "display": "Annual Preventive Health check-up cover"
+                }
+              ]
+            },
+            "benefit": [
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "Annual Preventive Health Check-up"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "Hemogram & ESR"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "Liver function test"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "Urine routine"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "Blood sugar - Fasting"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "HbA1C"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "Lipid profile"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "Blood urea"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "Serum creatinine"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "T3/T4/TSH"
+                    }
+                  ]
+                }
+              },
+              {
+                "type": {
+                  "coding": [
+                    {
+                      "display": "ECG"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ],
+        "plan": [
+          {
+            "identifier": [
+              {
+                "use": "official",
+                "system": "http://code.workz.com",
+                "value": "urn:uuid:52e4352c-7bcd-4791-80c4-ba45472f3619"
+              }
+            ],
+            "type": {
+              "coding": [
+                {
+                  "system": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-plan-type",
+                  "code": "01",
+                  "display": "Individual"
+                }
+              ]
+            },
+            "specificCost": [
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Tele Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Tele Consultation (GPs) - Option 1"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 0.0,
+                          "unit": "Unlimited"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Investigations Cover – Pathology & Radiology Expenses"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Pathology & Radiology Expenses - Option 1"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 0.0,
+                          "unit": "NA"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Doctor Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Doctor Consultation - Option 1"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 0.0,
+                          "unit": "NA"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Annual Preventive Health Check-up Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Annual Preventive Health Check-up - Option 1"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 1.0,
+                          "unit": "Voucher"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Tele Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Tele Consultation (All Specialties) - Option 2"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 0.0,
+                          "unit": "Unlimited"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Investigations Cover – Pathology & Radiology Expenses"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Pathology & Radiology Expenses - Option 2"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 1500.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Doctor Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Doctor Consultation - Option 2"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 0.0,
+                          "unit": "NA"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Annual Preventive Health Check-up Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Annual Preventive Health Check-up - Option 2"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 1.0,
+                          "unit": "Voucher"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Tele Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Tele Consultation (All Specialties) - Option 3"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 0.0,
+                          "unit": "Unlimited"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Investigations Cover – Pathology & Radiology Expenses"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Pathology & Radiology Expenses - Option 3"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 3000.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Doctor Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Doctor Consultation - Option 3"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 1000.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Annual Preventive Health Check-up Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Annual Preventive Health Check-up - Option 3"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 1.0,
+                          "unit": "Voucher"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Tele Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Tele Consultation (All Specialties) - Option 4"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 0.0,
+                          "unit": "Unlimited"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Investigations Cover – Pathology & Radiology Expenses"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Pathology & Radiology Expenses - Option 4"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 5000.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Doctor Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Doctor Consultation - Option 4"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 2000.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Annual Preventive Health Check-up Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Annual Preventive Health Check-up - Option 4"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 1.0,
+                          "unit": "Voucher"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Tele Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Tele Consultation (All Specialties) - Option 5"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 0.0,
+                          "unit": "Unlimited"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Investigations Cover – Pathology & Radiology Expenses"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Pathology & Radiology Expenses - Option 5"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 7000.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Doctor Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Doctor Consultation - Option 5"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 3000.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Annual Preventive Health Check-up Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Annual Preventive Health Check-up - Option 5"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 1.0,
+                          "unit": "Voucher"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Tele Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Tele Consultation (All Specialties) - Option 6"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 0.0,
+                          "unit": "Unlimited"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Investigations Cover – Pathology & Radiology Expenses"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Pathology & Radiology Expenses - Option 6"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 15000.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Doctor Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Doctor Consultation - Option 6"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 3000.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Annual Preventive Health Check-up Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Annual Preventive Health Check-up - Option 6"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 1.0,
+                          "unit": "Voucher"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "identifier": [
+              {
+                "use": "official",
+                "system": "http://code.workz.com",
+                "value": "urn:uuid:d0656141-2193-4ab3-9132-91002c0896b2"
+              }
+            ],
+            "type": {
+              "coding": [
+                {
+                  "system": "https://nrces.in/ndhm/fhir/r4/ValueSet/ndhm-plan-type",
+                  "code": "02",
+                  "display": "Family Floater"
+                }
+              ]
+            },
+            "specificCost": [
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Tele Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Tele Consultation (All Specialties) - Option 1"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 0.0,
+                          "unit": "Unlimited"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Investigations Cover – Pathology & Radiology Expenses"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Pathology & Radiology Expenses - Option 1"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 10000.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Doctor Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Doctor Consultation - Option 1"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 2.0,
+                          "unit": "Voucher"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Annual Preventive Health Check-up Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Annual Preventive Health Check-up - Option 1"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 2.0,
+                          "unit": "Voucher"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Tele Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Tele Consultation (All Specialties) - Option 2"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 0.0,
+                          "unit": "Unlimited"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Investigations Cover – Pathology & Radiology Expenses"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Pathology & Radiology Expenses - Option 2"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 20000.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Doctor Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Doctor Consultation - Option 2"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 2.0,
+                          "unit": "Voucher"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Annual Preventive Health Check-up Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Annual Preventive Health Check-up - Option 2"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 2.0,
+                          "unit": "Voucher"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Tele Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Tele Consultation (All Specialties) - Option 3"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 0.0,
+                          "unit": "Unlimited"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Investigations Cover – Pathology & Radiology Expenses"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Pathology & Radiology Expenses - Option 3"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 25000.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Doctor Consultation Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Doctor Consultation - Option 3"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 2.0,
+                          "unit": "Voucher"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "code": "Unknown",
+                      "display": "Annual Preventive Health Check-up Cover"
+                    }
+                  ]
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "code": "Unknown",
+                          "display": "Annual Preventive Health Check-up - Option 3"
+                        }
+                      ]
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                              "code": "fullcoverage"
+                            }
+                          ]
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://hl7.org/fhir/ValueSet/insuranceplan-applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ]
+                        },
+                        "value": {
+                          "value": 2.0,
+                          "unit": "Voucher"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

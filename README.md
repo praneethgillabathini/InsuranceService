@@ -1,96 +1,477 @@
-# NHCX Insurance FHIR Utility
+<div align="center">
 
-This microservice utility is designed to convert insurance claim documents from PDF format into NHCX (National Health Claim Exchange) compliant FHIR (Fast Healthcare Interoperability Resources) bundles. It provides a simple, user-friendly interface for document uploads and a powerful backend for processing.
+# ⚕️ NHCX Insurance FHIR Utility
 
-## Features
+**A production-ready microservice that converts Indian health insurance policy PDFs into NHCX-compliant FHIR R4 bundles using AI-powered extraction.**
 
-- **Web-Based Interface**: A clean, intuitive frontend built with React for easy PDF uploads.
-- **PDF to FHIR Conversion**: Robust backend logic to parse PDFs, extract relevant data, and transform it into structured FHIR resources.
-- **NHCX Compliance**: Ensures the generated FHIR bundles adhere to the specific profiles and standards set by the NHCX.
-- **RESTful API**: Exposes endpoints for seamless integration with other systems.
+![Python](https://img.shields.io/badge/Python-3.9%2B-3776AB?style=flat-square&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688?style=flat-square&logo=fastapi)
+![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react&logoColor=black)
+![FHIR R4](https://img.shields.io/badge/FHIR-R4-E15C27?style=flat-square)
+![NHCX](https://img.shields.io/badge/NHCX-Compliant-1565C0?style=flat-square)
 
-## Architecture
+</div>
 
-The application follows a decoupled client-server architecture, ensuring scalability and maintainability.
+---
 
-### Frontend (Client)
+## 📋 Table of Contents
 
-- **Framework**: React/
-- **Purpose**: Provides the user interface for uploading PDF documents. It communicates with the backend via REST API calls.
+- [Overview](#-overview)
+- [End-to-End Pipeline](#-end-to-end-pipeline)
+- [Why These Tools?](#-why-these-tools)
+- [Multi-LLM Architecture](#-multi-llm-architecture)
+- [FHIR Bundle Structure](#-fhir-r4-bundle-structure)
+- [API Reference](#-api-reference)
+- [Technology Stack](#-technology-stack)
+- [Configuration](#-configuration)
+- [Installation & Setup](#-installation--setup)
+- [Running the Application](#-running-the-application)
+- [Project Structure](#-project-structure)
 
-### Backend (Server)
+---
 
-- **Language**: Python
-- **Framework**: FastAPI
-- **Purpose**: Contains the core business logic. It handles:
-    1.  Receiving the PDF file from the frontend.
-    2.  Using PDF parsing libraries to extract text and data.
-    3.  Mapping the extracted data to the appropriate FHIR resources (e.g., `Claim`, `Patient`, `Coverage`).
-    4.  Bundling these resources into a single `Bundle` resource that is compliant with NHCX specifications.
-    5.  Returning the resulting FHIR bundle to the client.
+## 🎯 Overview
 
-## Technology Stack
+Indian health insurance PDFs (sold under IRDAI guidelines and processed through the **NHCX** — National Health Claim Exchange) contain dense, unstructured text about plan types, benefit limits, exclusions, co-pays, and TPA details. Translating this into a machine-readable, interoperable format requires:
 
-| Component | Technology                                |
-| :--- | :---------------------------------------- |
-| **Frontend** | React, Material-UI, Fetch API             |
-| **Backend** | Python, FastAPI                           |
-| **PDF Parsing** | `Marker`, `pdfplumber`                    |
-| **FHIR Handling** | `fhir.resources`                          |
-| **Package Manager** | `npm` (for frontend), `pip` (for backend) |
+1. High-quality OCR that retains document structure
+2. AI that understands Indian insurance terminology
+3. Clinical mapping that aligns extracted medical conditions and benefits directly to **SNOMED CT** codes
+4. A standards-compliant FHIR mapper that captures every clinical and financial nuance
 
-## Prerequisites
+This utility automates all four stages, exposing the result via a REST API and a premium browser UI.
 
-Ensure you have the following installed on your local development machine:
+---
 
-- Node.js (v18.x or newer)
-- Python (v3.9 or newer)
-- `pip` and `venv`
+## 🔄 End-to-End Pipeline
 
-## Installation & Setup
+```
+ ┌──────────────────────────────────────────────────────────────────────┐
+ │                        USER (Browser / API)                          │
+ └───────────────────────────────┬──────────────────────────────────────┘
+                                 │  1. Upload PDF
+                                 ▼
+ ┌──────────────────────────────────────────────────────────────────────┐
+ │  STAGE 1 — PDF → Structured Markdown (OCR)                          │
+ │                                                                      │
+ │  Fast path: pdftext (digital PDFs — all IRDAI/NHCX filed docs)      │
+ │  Slow path: Marker ML models (scanned / image-only PDFs)            │
+ │  • Preserves tables, headings, and benefit schedules                 │
+ │  • Runs on CPU (fp32) or GPU (fp16), configurable via config.yaml   │
+ └───────────────────────────────┬──────────────────────────────────────┘
+                                 │  2. Structured Markdown
+                                 ▼
+ ┌──────────────────────────────────────────────────────────────────────┐
+ │  STAGE 2 — Markdown Pruning (policy_pruner)                         │
+ │                                                                      │
+ │  • Removes boilerplate sections (ToC, glossary, arbitration, etc.)  │
+ │  • Keeps only clinically and financially relevant content            │
+ │  • Reduces LLM token usage by ~40–60%, cutting cost and latency     │
+ └───────────────────────────────┬──────────────────────────────────────┘
+                                 │  3. Pruned Markdown
+                                 ▼
+ ┌──────────────────────────────────────────────────────────────────────┐
+ │  STAGE 3 — Structured Data Extraction (LLM)                         │
+ │                                                                      │
+ │  • System prompt instructs the LLM to fill a strict JSON schema     │
+ │    (insurance_fhir_mapping.json) — no invented keys allowed         │
+ │  • Extracts: plan name, type, aliases, period, insurer, TPA,        │
+ │    networks, coverages, benefits, limits, exclusions, costs         │
+ │  • Swappable across 5 providers via a single config.yaml change     │
+ │    (OpenAI · Gemini · Ollama · Groq · AWS Bedrock)                  │
+ └───────────────────────────────┬──────────────────────────────────────┘
+                                 │  4. Extracted JSON
+                                 ▼
+ ┌──────────────────────────────────────────────────────────────────────┐
+ │  STAGE 4 — FHIR R4 Bundle Generation (insurance_plan_fhir_mapper)  │
+ │                                                                      │
+ │  Resources built:                                                    │
+ │  • Organization (Insurer)  — meta.profile, IRDAI identifier         │
+ │  • Organization (TPA)      — IRDAI licence number                   │
+ │  • Organization[] (Network hospitals)                                │
+ │  • InsurancePlan           — alias, language, narrative, period,    │
+ │                              networks, coverages, benefit limits,    │
+ │                              exclusion & condition extensions,       │
+ │                              plan-level costs & applicability        │
+ │  • Bundle (collection)     — language=en-IN, timestamp              │
+ └───────────────────────────────┬──────────────────────────────────────┘
+                                 │  5. FHIR Bundle (JSON)
+                                 ▼
+ ┌──────────────────────────────────────────────────────────────────────┐
+ │  RESPONSE                                                            │
+ │  • extracted_data  — structured intermediate JSON (auditable)       │
+ │  • fhir_bundle     — NHCX-compliant R4 Bundle ready for submission  │
+ └──────────────────────────────────────────────────────────────────────┘
+```
 
-Follow these steps to get the project running locally.
+---
+
+## 🔬 Why These Tools?
+
+### 🖹 Dual-Path PDF Extraction
+
+Most PDF parsing libraries (`pdfplumber`, `PyMuPDF`) struggle with complex, multi-column insurance documents. The service uses a tiered approach:
+
+- **Fast path** — `pdftext` extracts text from digital PDFs instantly with no ML overhead. All standard IRDAI/NHCX-filed documents take this path.
+- **Slow path** — `marker-pdf` (a deep-learning OCR pipeline built on `transformers` and `torch`) fires only for scanned / image-only PDFs. It detects document layout, preserves table structure as Markdown, and is configurable via `marker.*` settings in `config.yaml`.
+
+### 📄 `insurance_fhir_mapping.json` — Schema-Guided Extraction
+
+Rather than writing fragile regex patterns, the LLM is guided by a **strict JSON schema template** stored in `config/insurance_fhir_mapping.json`. The system prompt instructs the model:
+
+```
+You MUST NOT invent new JSON keys, group data under new headers, or change the schema.
+Replace the instruction text inside the template values with extracted data.
+If any field is not found, set it to null or [] — do not omit the key.
+```
+
+This approach:
+- Makes the output **deterministic and parseable** — the mapper always receives the same shape of JSON
+- Lets you **extend the schema** without touching Python code — just add a new key with an instruction string
+- Provides a **clear audit trail** — the `extracted_data` field in the API response contains the raw LLM output before FHIR mapping
+
+### ⚙️ `config.yaml` + `.env` — Layered Configuration
+
+The settings system uses a **priority chain** (highest → lowest):
+
+```
+Environment Variables  →  .env file  →  config.yaml  →  Pydantic defaults
+```
+
+| Layer | Purpose |
+|---|---|
+| `config.yaml` | Non-secret settings: LLM provider, model names, Marker worker counts |
+| `.env` | Secrets: API keys for OpenAI, Gemini, Groq, AWS credentials |
+| Environment variables | CI/CD overrides without file changes |
+
+Switching providers requires **one line change** in `config.yaml`:
+```yaml
+llm:
+  provider: "gemini"   # ← change to "openai", "ollama", "grok", or "bedrock"
+```
+
+### 🏥 SNOMED CT Integration
+
+The FHIR mapping engine integrates a local **SNOMED CT Dictionary** (`snomed_dictionary.json`). During resource building, extracted clinical terms are cross-referenced against this dictionary. When a match is found, the mapper automatically assigns the official SNOMED code and applies the `http://snomed.info/sct` system URI to the resulting FHIR `CodeableConcept` elements.
+
+---
+
+## 🤖 Multi-LLM Architecture
+
+The service is designed to be **LLM-agnostic** from day one. A single abstract interface drives all providers:
+
+```
+LLMService (Abstract Base Class)
+│
+├── _OpenAICompatibleService  ← shared async chat.completions logic
+│   ├── OpenAILLMService      — GPT-4 Turbo via OpenAI API
+│   ├── OllamaLLMService      — any open model (Llama 3.1, Mistral…) running locally
+│   └── GrokLLMService        — Llama 3 70B via Groq's ultra-fast inference API
+│
+├── GeminiLLMService          — Gemini Flash via Google AI SDK (non-OpenAI protocol)
+└── BedrockLLMService         — Claude / Nova / Llama on AWS Bedrock via boto3
+```
+
+### Why five providers?
+
+| Provider | Best For |
+|---|---|
+| **OpenAI (GPT-4 Turbo)** | Highest accuracy for complex policy language |
+| **Gemini Flash** | High speed + long context window at low cost |
+| **Groq (Llama 3 70B)** | Sub-second latency for real-time demos |
+| **Ollama (local)** | Air-gapped / on-premise deployments — zero data leaves your machine |
+| **AWS Bedrock (Claude / Nova)** | Enterprise compliance, existing AWS infrastructure |
+
+### Health Checks on Startup
+
+Every provider has a **dedicated health check** (`src/health_check.py`) that runs when the server starts. If the configured provider is unreachable or misconfigured, the application **refuses to start** with a clear error message — preventing silent failures in production.
+
+---
+
+## 📦 FHIR R4 Bundle Structure
+
+A typical output bundle contains the following resources:
+
+```
+Bundle (collection, language: en-IN)
+├── Organization  [Insurer]
+│   ├── meta.profile → ABDM StructureDefinition/Organization
+│   ├── identifier   → IRDAI insurer registry (use: "official")
+│   └── telecom      → phone · email · website
+│
+├── Organization  [TPA]
+│   ├── meta.profile → ABDM StructureDefinition/Organization
+│   └── identifier   → IRDAI TPA licence number
+│
+├── Organization[]  [Network Hospitals]   (one per network)
+│   └── type → "Healthcare Provider Network"
+│
+└── InsurancePlan
+    ├── meta.profile → ABDM StructureDefinition/InsurancePlan
+    ├── text         → auto-generated XHTML Narrative
+    ├── language     → "en-IN"
+    ├── identifier   → UUID (use: "official")
+    ├── alias[]      → alternate product / marketing names
+    ├── status       → "active"
+    ├── type[]       → ABDM ValueSet/ndhm-insuranceplan-type
+    ├── ownedBy      → ref → Organization [Insurer]
+    ├── administeredBy → ref → Organization [TPA]
+    ├── period       → start / end dates
+    ├── network[]    → ref → Organization[] [Networks]
+    ├── coverageArea[] → geographic strings
+    ├── contact[]
+    │   ├── purpose  → contactentity-type system
+    │   ├── name     → HumanName.text
+    │   └── telecom  → phone · email
+    ├── extension[]
+    │   ├── Claim-SupportingInfoRequirement (POI / POA documents)
+    │   └── Claim-Exclusion (pre-existing diseases, waiting periods)
+    ├── coverage[]
+    │   └── benefit[]
+    │       ├── type → CodeableConcept (SNOMED CT where available)
+    │       └── limit[]
+    │           ├── value  → Quantity (INR / Days / %)
+    │           └── code   → benefit-unit CodeableConcept
+    └── plan[]
+        ├── identifier → UUID
+        ├── type       → ndhm-plan-type (Individual / Family Floater)
+        └── specificCost[]
+            └── benefit[]
+                └── cost[]
+                    ├── type          → benefit-cost-type
+                    ├── applicability → in-network / out-of-network
+                    └── value         → Quantity
+```
+
+---
+
+## 🌐 API Reference
+
+All endpoints are prefixed with `/api/v1`.
+
+### Insurance Processing
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/insurance/process` | Full pipeline: PDF → OCR → LLM → FHIR bundle |
+| `POST` | `/insurance/extract-only` | PDF → OCR → LLM extraction only (no FHIR mapping) |
+| `POST` | `/insurance/generate-fhir` | JSON → FHIR bundle (when you already have extracted data) |
+
+### System Health
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `GET` | `/insurance/health` | Service health — LLM + PDF processor status, API version |
+
+### FHIR Utilities
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/fhir/validate` | Structural validation of a FHIR bundle (error/warning/info issues) |
+| `POST` | `/fhir/bundle-summary` | Human-readable summary card from a FHIR bundle |
+
+Interactive API docs available at `http://localhost:8000/docs` (Swagger UI).
+
+---
+
+## 🛠️ Technology Stack
+
+| Layer | Technology | Why |
+|---|---|---|
+| **Frontend** | React 18, Vanilla CSS | Lightweight; no UI framework overhead |
+| **API Server** | FastAPI + Uvicorn | Async-native, auto OpenAPI docs, Pydantic validation |
+| **PDF → Text** | `pdftext` (fast) + `marker-pdf` (fallback OCR) | Fast path for digital PDFs; ML fallback for scans |
+| **LLM Abstraction** | Abstract base class + Factory | Swap any of 5 providers with one config line |
+| **LLM Providers** | OpenAI · Gemini · Ollama · Groq · Bedrock | Cloud + on-premise coverage |
+| **FHIR Building** | `fhir.resources` (R4) | Type-safe FHIR resource construction; Pydantic-backed |
+| **Config** | `config.yaml` + `.env` + Pydantic Settings | Layered; secrets stay out of YAML |
+| **Health Checks** | Per-provider sync functions | Fail-fast on startup if LLM is misconfigured |
+
+---
+
+## ⚙️ Configuration
+
+### `config.yaml` — Non-secret settings
+
+```yaml
+llm:
+  provider: "gemini"          # openai | ollama | gemini | grok | bedrock
+
+  openai:
+    model_name: "gpt-4-turbo"
+
+  ollama:
+    base_url: "http://localhost:11434/v1"
+    model_name: "llama3.1"
+
+  gemini:
+    model_name: "gemini-3-flash"
+
+  grok:
+    model_name: "llama3-70b-8192"
+
+  bedrock:
+    region_name: "us-east-2"
+    model_id: "global.amazon.nova-2-lite-v1:0"
+
+marker:
+  workers: 2
+  pdftext_workers: 2
+  batch_multiplier: 2
+  model_precision: "fp32"
+  exclude_images: true
+
+pdf_processor:
+  min_chars_for_text_pdf: 200   # characters threshold for fast-path selection
+```
+
+### `.env` — Secrets (copy `.env.example` → `.env`)
+
+```bash
+OPENAI_API_KEY="sk-..."
+GOOGLE_API_KEY="AIza..."
+GROK_API_KEY="gsk_..."
+AWS_ACCESS_KEY_ID="AKIA..."
+AWS_SECRET_ACCESS_KEY="..."
+```
+
+> **Ollama** requires no API key — just have the Ollama service running locally.
+
+---
+
+## 🚀 Installation & Setup
+
+### Prerequisites
+
+- Python 3.9+
+- Node.js 18+
+- `pip`, `venv`, `npm`
 
 ### Backend Setup
+
 ```bash
-# From the project root directory (e.g., C:/PROGRAMS/hackathon/InsuranceService/)
+git clone <repo-url>
+cd InsuranceService
 
-# 1. Create and activate a Python virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+python -m venv .venv
 
-# 2. Install the required Python packages
+# Windows
+.venv\Scripts\activate
+# macOS / Linux
+source .venv/bin/activate
+
 pip install -r requirements.txt
+
+cp .env.example .env
+# Edit .env — add the API key for your chosen LLM provider
 ```
 
 ### Frontend Setup
 
 ```bash
-# 1. Navigate to the frontend directory
-cd path/to/your/frontend
-
-# 2. Install the required npm packages
+cd frontend
 npm install
 ```
 
-## Running the Application
+---
 
-1.  **Start the Backend Server**:
-    ```bash
-    # From the project's root directory (C:/PROGRAMS/hackathon/InsuranceService/)
-    uvicorn src.app:app --reload
-    ```
-    The backend will be available at `http://localhost:8000`.
+## ▶️ Running the Application
 
-2.  **Start the Frontend Application**:
-    ```bash
-    # From the frontend directory
-    npm start
-    ```
-    The frontend will open in your browser at `http://localhost:3000`.
+### Using Docker (Recommended)
 
-## Usage
+```bash
+docker-compose up -d --build
+```
 
-1.  Open your web browser and navigate to `http://localhost:3000`.
-2.  Use the file upload component to select and upload an insurance claim PDF.
-3.  The application will process the file and display the resulting NHCX compliant FHIR bundle, which you can then view or download.
+- **Backend** → `http://localhost:8000`
+- **Frontend** → `http://localhost`
+
+### Local Development
+
+```bash
+# Terminal 1 — Backend (from project root, venv active)
+uvicorn app:app --reload --host 0.0.0.0 --port 8000
+
+# Terminal 2 — Frontend
+cd frontend && npm start
+```
+
+The React dev server starts at `http://localhost:3000` and proxies all `/api/v1/*` calls to `localhost:8000`.  
+The backend runs the LLM health check on startup — it exits immediately if the configured provider is unreachable.
+
+### Batch Processing
+
+Process multiple PDFs in one go:
+
+```bash
+python scripts/batch_process.py --input data/input --output data/output
+```
+
+---
+
+## 📂 Project Structure
+
+```
+InsuranceService/
+│
+├── app.py                              # FastAPI entry point, lifespan, middleware
+├── config.yaml                         # Non-secret configuration (LLM, Marker, PDF)
+├── .env.example                        # Template for secrets (copy → .env)
+├── requirements.txt
+│
+├── config/
+│   └── insurance_fhir_mapping.json     # JSON schema template used in LLM prompt
+│
+├── scripts/
+│   └── batch_process.py                # CLI tool: batch PDF → FHIR bundle
+│
+├── src/
+│   ├── config.py                       # Pydantic Settings — YAML + .env + env var layers
+│   ├── constants.py                    # All log messages, error codes, string literals
+│   ├── health_check.py                 # Per-provider LLM health check functions
+│   ├── logging_config.py               # Structured logging setup
+│   ├── middleware.py                   # Request/response logging middleware
+│   │
+│   ├── core/
+│   │   ├── pdf_processor.py            # Dual-path OCR: pdftext fast-path + Marker fallback
+│   │   └── prompts.py                  # Loads insurance_fhir_mapping.json into system prompt
+│   │
+│   ├── routes/
+│   │   ├── claims.py                   # Insurance processing endpoints (process, extract, generate-fhir)
+│   │   ├── health.py                   # GET /insurance/health
+│   │   └── fhir.py                     # FHIR utilities (validate, bundle-summary)
+│   │
+│   ├── services/
+│   │   ├── policy_pruner.py            # Strips boilerplate sections from Markdown
+│   │   ├── fhir/
+│   │   │   ├── fhir_constants.py       # ABDM/HL7 URLs, system codes, profile URLs
+│   │   │   └── insurance_plan_fhir_mapper.py  # Builds FHIR R4 bundle from dict
+│   │   └── llm/
+│   │       ├── llm_service.py          # Abstract base + 5 concrete LLM implementations
+│   │       └── llm_factory.py          # Reads config and returns the right LLMService
+│   │
+│   └── schemas/
+│       └── insurance_schemas.py        # Pydantic request/response schemas
+│
+├── tests/
+│   └── test_fhir_mapper.py             # Unit tests for FHIR R4 parameters
+│
+└── frontend/
+    ├── package.json                    # React app; proxy → localhost:8000
+    └── src/
+        ├── App.js                      # Layout, state, API wiring
+        ├── index.js                    # Global CSS, keyframes, responsive grid
+        ├── api/
+        │   └── claimService.js         # All API call functions
+        └── components/
+            ├── Upload.js               # Drag-and-drop PDF zone + FHIR toggle
+            ├── Result.js               # Tabbed JSON viewer, copy/download
+            ├── StatusBar.js            # Live /health polling (pauses during requests)
+            └── SummaryCard.js          # Plan summary card with FHIR validation issues
+```
+
+---
+
+## 📄 License
+
+This project is developed as part of the **NHCX Hackathon**. All FHIR structure definitions and ValueSet URLs follow [HL7 FHIR R4](https://hl7.org/fhir/R4/) and [ABDM NDHM](https://nrces.in/ndhm/fhir/r4) specifications.
