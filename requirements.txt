@@ -12,6 +12,7 @@ google-generativeai
 boto3
 groq
 pydantic-settings
+eval_type_backport
 PyYAML
 python-dotenv
 fhir.resources
