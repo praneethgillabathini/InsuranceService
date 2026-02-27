@@ -1,73 +1,81 @@
 {
     "bundleType": "InsurancePlan",
     "organisation": {
-        "name": "",
-        "phone": ""
+        "name": "Full legal name of the insurance company",
+        "phone": "Insurer's customer care phone number",
+        "email": "Insurer's customer care email address, if mentioned",
+        "website": "Insurer's official website URL, if mentioned"
     },
     "tpaOrganisation": {
         "name": "Name of the Third Party Administrator (TPA), if any",
-        "identifier": "TPA ID or License number"
+        "identifier": "TPA ID or IRDAI Licence number, if mentioned"
     },
     "insurancePlan": {
         "status": "active",
-        "name": "Name of the health insurance policy/product",
+        "name": "Full commercial name of the health insurance policy/product",
+        "alias": [
+            "Any alternate product name, short name, or marketing name"
+        ],
+        "language": "en-IN",
         "typeCode": "Use '01' for Hospitalisation Indemnity, '02' for Top-up, '05' for PA",
-        "typeDisplay": "Text description of the typeCode",
-        "periodStart": "Policy start date (YYYY-MM-DD)",
-        "periodEnd": "Policy end date (YYYY-MM-DD)",
+        "typeDisplay": "Human-readable description of the typeCode",
+        "periodStart": "Policy start date in YYYY-MM-DD format, if stated",
+        "periodEnd": "Policy end date or expiry date in YYYY-MM-DD format, if stated",
         "coverageArea": [
-            "Array of strings representing geographic validity (e.g., 'India')"
+            "Geographic area of validity, e.g. 'India', 'Pan India'"
         ],
         "networks": [
-            "Array of strings for provider networks (e.g., 'XYZ PPN')"
+            "Name of each provider/hospital network listed, e.g. 'HDFC Ergo Network Hospitals'"
         ],
         "contacts": [
             {
-                "purpose": "e.g., Claims Helpline, Grievance",
-                "phone": "Phone number"
+                "purpose": "e.g. Claims Helpline, Grievance, Customer Service",
+                "name": "Contact person or department name, if mentioned",
+                "phone": "Phone number for this contact",
+                "email": "Email address for this contact, if mentioned"
             }
         ],
         "supportingInfoRequirements": [
             {
-                "categoryCode": "'POI' (Proof of Identity) or 'POA' (Proof of Address)",
-                "categoryDisplay": "Proof of identity or Proof of address",
-                "documentCode": "e.g., 'ADN' (Aadhaar), 'PAN' (PAN Card)",
-                "documentDisplay": "e.g., Aadhaar number"
+                "categoryCode": "'POI' for Proof of Identity or 'POA' for Proof of Address",
+                "categoryDisplay": "Proof of Identity or Proof of Address",
+                "documentCode": "e.g. 'ADN' (Aadhaar), 'PAN' (PAN Card), 'DL' (Driving Licence)",
+                "documentDisplay": "Human-readable document name, e.g. Aadhaar Card"
             }
         ],
         "exclusions": [
             {
-                "categoryCode": "'Excl01' (Pre-Existing) or 'Excl02' (Waiting period)",
-                "categoryDisplay": "e.g., Pre-Existing Diseases",
-                "statement": "The exact exclusion rule text from the document"
+                "categoryCode": "'Excl01' for Pre-Existing Disease or 'Excl02' for Waiting Period",
+                "categoryDisplay": "e.g. Pre-Existing Diseases, Waiting Period",
+                "statement": "Exact exclusion rule text extracted from the document"
             }
         ],
         "coverages": [
             {
-                "typeDisplay": "e.g., Inpatient care, Day Care, Tele Consultation",
-                "condition": "Any specific condition or prerequisite for this coverage",
+                "typeDisplay": "Coverage category name, e.g. Inpatient Care, Day Care, Tele Consultation",
+                "condition": "Any specific condition or prerequisite for this coverage, if stated",
                 "benefits": [
                     {
-                        "typeCode": "SNOMED/Terminology code if known, else leave empty",
-                        "typeDisplay": "Name of the specific benefit (e.g., Room Rent, ICU, Doctor Consultation)",
-                        "limitValue": "Numeric cap/limit (e.g., 5000)",
-                        "limitUnit": "e.g., INR, Days, Percentage"
+                        "typeCode": "Provide the exact 9-15 digit SNOMED CT code if possible (e.g. 568291000005106 for Room Rent). If not known, leave empty",
+                        "typeDisplay": "Specific benefit name, e.g. Room Rent, ICU Charges, Doctor Consultation",
+                        "limitValue": "Numeric cap or limit, e.g. 5000",
+                        "limitUnit": "Unit of the limit, e.g. INR, Days, Percentage"
                     }
                 ]
             }
         ],
         "plans": [
             {
-                "planTypeCode": "'01' (Individual) or '02' (Family Floater)",
+                "planTypeCode": "'01' for Individual, '02' for Family Floater",
                 "planTypeDisplay": "Individual or Family Floater",
                 "specificCosts": [
                     {
-                        "categoryCode": "e.g., 49122002", 
-                        "categoryDisplay": "e.g., Ambulance", 
-                        "benefitTypeCode": "e.g., 49122002", 
-                        "benefitTypeDisplay": "e.g., Ambulance", 
-                        "costType": "'fullcoverage', 'copay', or 'deductible'", 
-                        "costValue": "Numeric cost or percentage", 
+                        "categoryCode": "Provide exactly the SNOMED CT code for the cost category, e.g. 49122002 for Ambulance",
+                        "categoryDisplay": "Category name, e.g. Ambulance, Pharmacy",
+                        "benefitTypeCode": "Same as categoryCode or a more specific SNOMED CT code",
+                        "benefitTypeDisplay": "Benefit description matching the cost",
+                        "costType": "'fullcoverage', 'copay', or 'deductible'",
+                        "costValue": "Numeric cost value or percentage",
                         "costUnit": "INR or %"
                     }
                 ]
