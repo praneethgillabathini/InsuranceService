@@ -8,7 +8,7 @@ fastapi
 uvicorn
 python-multipart
 openai
-google-generativeai
+google-genai
 boto3
 groq
 pydantic-settings

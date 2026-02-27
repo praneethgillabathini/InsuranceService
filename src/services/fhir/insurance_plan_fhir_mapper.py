@@ -36,7 +36,9 @@ import json
 
 logger = logging.getLogger(__name__)
 
-SNOMED_DICT_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "core", "snomed_dictionary.json")
+from src.config import ROOT_DIR
+
+SNOMED_DICT_PATH = os.path.join(ROOT_DIR, "src", "core", "snomed_dictionary.json")
 SNOMED_DICT = {}
 TERM_TO_CODE = {}
 try:

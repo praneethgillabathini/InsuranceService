@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from openai import AsyncOpenAI, APIError
 
-import google.generativeai as genai
-from google.api_core import exceptions as google_exceptions
+from google import genai
+from google.genai import types
 import boto3
 import json
 import asyncio
@@ -82,15 +82,18 @@ class GeminiLLMService(LLMService):
 
     def __init__(self):
         logger.info(constants.LOG_LLM_SERVICE_INIT.format(service_name=self.__class__.__name__))
-        genai.configure(api_key=settings.google_api_key)
+        self.client = genai.Client(api_key=settings.google_api_key)
         self.model_name = settings.llm.gemini.model_name
 
     async def process_text(self, system_prompt: str, user_prompt: str) -> str:
         try:
-            model = genai.GenerativeModel(model_name=self.model_name, system_instruction=system_prompt)
-            response = await model.generate_content_async(user_prompt, stream=False)
+            response = await self.client.aio.models.generate_content(
+                model=self.model_name,
+                contents=user_prompt,
+                config=types.GenerateContentConfig(system_instruction=system_prompt)
+            )
             return response.text
-        except (google_exceptions.GoogleAPICallError, grpc.aio.AioRpcError) as e:
+        except Exception as e:
             error_message = constants.LOG_LLM_API_CALL_FAILED.format(service_name=self.__class__.__name__, error=e)
             logger.error(error_message)
             raise RuntimeError(constants.ERROR_MESSAGE_LLM_API_ERROR) from e

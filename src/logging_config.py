@@ -3,7 +3,9 @@ import sys
 from contextvars import ContextVar
 from .config import settings
 
-request_id_var: ContextVar[str | None] = ContextVar("request_id", default=None)
+from typing import Optional
+
+request_id_var: ContextVar[Optional[str]] = ContextVar("request_id", default=None)
 
 
 class RequestIdFilter(logging.Filter):

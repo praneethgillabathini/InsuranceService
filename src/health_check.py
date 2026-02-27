@@ -3,7 +3,7 @@ import requests
 import json
 import boto3
 import openai
-import google.generativeai as genai
+from google import genai
 from groq import Groq
 from botocore.exceptions import ClientError, NoCredentialsError
 from typing import Callable, Dict, Any
@@ -61,8 +61,8 @@ def _check_gemini() -> bool:
     if not _check_api_key("Google Gemini", settings.google_api_key):
         return False
     try:
-        genai.configure(api_key=settings.google_api_key)
-        next(genai.list_models())
+        client = genai.Client(api_key=settings.google_api_key)
+        next(client.models.list())
         logger.info(constants.LOG_HEALTH_PROVIDER_OK.format(provider="Google Gemini"))
         return True
     except Exception as e:
