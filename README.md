@@ -152,7 +152,7 @@ llm:
 
 ### 🏥 SNOMED CT Integration
 
-The FHIR mapping engine integrates a local **SNOMED CT Dictionary** (`snomed_dictionary.json`). During resource building, extracted clinical terms are cross-referenced against this dictionary. When a match is found, the mapper automatically assigns the official SNOMED code and applies the `http://snomed.info/sct` system URI to the resulting FHIR `CodeableConcept` elements.
+The FHIR mapping engine integrates a local **SNOMED CT Dictionary** located at `src/core/snomed_dictionary.json`. During resource building, extracted clinical terms are cross-referenced against this dictionary. When a match is found, the mapper automatically assigns the official SNOMED code and applies the `http://snomed.info/sct` system URI to the resulting FHIR `CodeableConcept` elements.
 
 ---
 
@@ -323,6 +323,10 @@ marker:
 
 pdf_processor:
   min_chars_for_text_pdf: 200   # characters threshold for fast-path selection
+
+### `config/insurance_fhir_mapping.json` — Mapping Schema
+
+The extraction logic is driven by the prompt template and JSON schema defined in [config/insurance_fhir_mapping.json](file:///config/insurance_fhir_mapping.json). This file contains the instructions provided to the LLM to ensure the extracted JSON follows a strict structure compatible with the FHIR mapper.
 ```
 
 ### `.env` — Secrets (copy `.env.example` → `.env`)
@@ -441,7 +445,8 @@ InsuranceService/
 │   │
 │   ├── core/
 │   │   ├── pdf_processor.py            # Dual-path OCR: pdftext fast-path + Marker fallback
-│   │   └── prompts.py                  # Loads insurance_fhir_mapping.json into system prompt
+│   │   ├── prompts.py                  # Loads insurance_fhir_mapping.json into system prompt
+│   │   └── snomed_dictionary.json      # Local SNOMED CT terminology dictionary
 │   │
 │   ├── routes/
 │   │   ├── claims.py                   # Insurance processing endpoints (process, extract, generate-fhir)
