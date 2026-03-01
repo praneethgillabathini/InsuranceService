@@ -32,7 +32,7 @@
         "387713003": "Surgical procedure",
         "73957001": "Air transport ambulance",
         "465341007": "Automobile ambulance",
-        "568291000005106": "Hospital unit (Room Rent)",
+        "568291000005106": "Hospital unit",
         "272181003": "Clinical equipment and/or device (ICU)",
         "266719004": "Oral chemotherapy",
         "1269349006": "Transplantation of stem cell",
@@ -45,7 +45,9 @@
         "1259938008": "Homeopathic medicine",
         "1259940003": "Yoga medicine",
         "1259218001": "Unani medicine",
-        "1259219009": "Siddha medicine"
+        "1259219009": "Siddha medicine",
+        "408443003": "General medical practice",
+        "108252007": "Laboratory procedure"
     },
     "termToCodeMapping": {
         "accident and emergency service": "310000008",
@@ -75,6 +77,10 @@
         "ambulance": "49122002",
         "maternity": "310000008",
         "day care": "737850002",
-        "ayush": "1259939000"
+        "ayush": "1259939000",
+        "medical practitioner consultation": "408443003",
+        "laboratory and radiology procedures": "108252007",
+        "pathology & radiology expenses": "108252007",
+        "doctor consultation cover": "408443003"
     }
 }

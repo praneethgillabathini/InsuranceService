@@ -23,7 +23,7 @@ llm:
     model_name: "llama3.1"
 
   gemini:
-    model_name: "gemini-2.5-flash"
+    model_name: "gemini-3-flash-preview"
 
   grok:
     base_url: "https://api.groq.com/openai/v1"

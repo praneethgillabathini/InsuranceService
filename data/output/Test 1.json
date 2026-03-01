@@ -1,321 +1,40 @@
 {
   "resourceType": "Bundle",
-  "id": "03e72c55-f16c-41e3-a8ef-35116f9821f2",
+  "id": "1fc6b49b-0887-46ea-9016-08fd0832f63e",
   "meta": {
+    "versionId": "1",
     "profile": [
-      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlanBundle"
     ]
   },
   "language": "en-IN",
+  "identifier": {
+    "system": "http://code.workz.com",
+    "value": "1fc6b49b-0887-46ea-9016-08fd0832f63e"
+  },
   "type": "collection",
-  "timestamp": "2026-02-27T23:07:15.379753Z",
+  "timestamp": "2026-03-01T08:20:29.209640Z",
   "entry": [
     {
-      "fullUrl": "urn:uuid:f3e3a6c3-7942-49c9-9ea4-727611e8d3fd",
+      "fullUrl": "urn:uuid:2aaf9464-ebdc-403b-b89d-1ea3708a535f",
       "resource": {
         "resourceType": "InsurancePlan",
-        "id": "f3e3a6c3-7942-49c9-9ea4-727611e8d3fd",
+        "id": "2aaf9464-ebdc-403b-b89d-1ea3708a535f",
         "meta": {
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlan"
           ]
         },
-        "language": "en-IN",
+        "language": "en",
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Insurance Plan: HEALTH PRIME Rider for Health Products. Status: active.</p></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\"><p>Insurance Plan: HEALTH PRIME. Status: active.</p></div>"
         },
-        "extension": [
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "code": "Excl02",
-                      "display": "Waiting Period"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Initial 30 days waiting period is applicable on teleconsultation required for illness during the first year of Rider Period. This waiting period is not applicable for renewals without break."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {}
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Tele consultation outside the Digital platform of service provider’s application/website video/audio/chat consultation, in-clinic/physical consultation is not covered under the Rider."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {}
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Teleconsultation benefit is not transferrable to any other member unless the member is covered under the Base Policy & has opted this Rider."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {}
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "If the Tele Consultation is not availed in the policy year during the Rider Period, the benefit cannot be carried forward to the subsequent policy year during the Rider Period."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {}
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Reimbursement of teleconsultation benefit is not covered."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "code": "Excl02",
-                      "display": "Waiting Period"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Initial 30 days waiting period is applicable for consultation required for illness during the first year of this Rider. This waiting period is not applicable for renewals without break."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {}
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Other expenses of investigations, medicines, procedures or any medical, non-medical items are not covered."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {}
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "If the Doctor Consultation cover is not availed in the policy year the benefit cannot be carried forward to the subsequent policy year after renewal."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "code": "Excl02",
-                      "display": "Waiting Period"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Initial 30 days waiting period is applicable for investigations Cover- Pathology & Radiology expenses related to illness during the first year of Rider. This waiting period is not applicable for renewals without break."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {}
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "If the Investigation cover is not availed in the respective policy year the benefit cannot be carried forward to the subsequent policy year after renewal."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "code": "Excl02",
-                      "display": "Waiting Period"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Initial 30 days waiting period is applicable for investigations related to illness during the first year of Rider Period. This waiting period is not applicable for renewals without break."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {}
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Preventive health check-up cannot be availed outside the prescribed list of hospitals or diagnostic centers."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {}
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Home collection facility will available only at selected locations. For locations where home sample collection is not available, the customer will have to physically go and take the tests."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {}
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "The complete list of tests as given above has to be completed in a single appointment."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {}
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "If the health check-up is not availed in the policy year during the Rider Period the benefit cannot be carried forward to the subsequent policy year during the Rider Period after renewal."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {}
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Reimbursement of preventive health check-up expenses is excluded from the scope of the Rider."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          }
-        ],
         "identifier": [
           {
             "use": "official",
             "system": "http://code.workz.com",
-            "value": "urn:uuid:431bd157-b2b9-4b7f-a2fa-e3803b610361"
+            "value": "urn:uuid:c9f0220b-1120-462a-9fda-d382c95d0469"
           }
         ],
         "status": "active",
@@ -327,13 +46,19 @@
                 "code": "01",
                 "display": "Hospitalisation Indemnity"
               }
-            ]
+            ],
+            "text": "Hospitalisation Indemnity"
           }
         ],
-        "name": "HEALTH PRIME Rider for Health Products",
-        "alias": [],
+        "name": "HEALTH PRIME",
+        "alias": [
+          "Rider for Health Products"
+        ],
+        "period": {
+          "start": "2020-01-01"
+        },
         "ownedBy": {
-          "reference": "urn:uuid:9983c685-c628-4c28-ab49-00e98e0c89a4"
+          "reference": "urn:uuid:c0f6e241-d04f-412a-87f6-5f735704df7a"
         },
         "coverageArea": [
           {
@@ -346,10 +71,34 @@
               "coding": [
                 {
                   "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
-                  "code": "Customer Service",
-                  "display": "Customer Service"
+                  "code": "PATINF",
+                  "display": "Patient"
                 }
               ],
+              "text": "Sales"
+            },
+            "name": {
+              "text": "Sales Department"
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "1800 209 0144"
+              }
+            ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "PATINF",
+                  "display": "Patient"
+                }
+              ],
+              "text": "Service"
+            },
+            "name": {
               "text": "Customer Service"
             },
             "telecom": [
@@ -368,72 +117,20 @@
               "coding": [
                 {
                   "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
-                  "code": "Sales",
-                  "display": "Sales"
+                  "code": "PATINF",
+                  "display": "Patient"
                 }
               ],
-              "text": "Sales"
+              "text": "Grievance"
+            },
+            "name": {
+              "text": "Grievance Redressal Officer"
             },
             "telecom": [
               {
                 "system": "phone",
-                "value": "1800 209 0144"
-              }
-            ]
-          },
-          {
-            "purpose": {
-              "coding": [
-                {
-                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
-                  "code": "Grievance Redressal Level 1",
-                  "display": "Grievance Redressal Level 1"
-                }
-              ],
-              "text": "Grievance Redressal Level 1"
-            },
-            "telecom": [
-              {
-                "system": "email",
-                "value": "bagichelp@bajajallianz.co.in"
-              }
-            ]
-          },
-          {
-            "purpose": {
-              "coding": [
-                {
-                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
-                  "code": "Grievance for Senior Citizens",
-                  "display": "Grievance for Senior Citizens"
-                }
-              ],
-              "text": "Grievance for Senior Citizens"
-            },
-            "telecom": [
-              {
-                "system": "email",
-                "value": "seniorcitizen@bajajallianz.co.in"
-              }
-            ]
-          },
-          {
-            "purpose": {
-              "coding": [
-                {
-                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
-                  "code": "Grievance Redressal Officer",
-                  "display": "Grievance Redressal Officer"
-                }
-              ],
-              "text": "Grievance Redressal Officer"
-            },
-            "name": [
-              {
-                "text": "Grievance Redressal Officer"
-              }
-            ],
-            "telecom": [
+                "value": "020-30305858"
+              },
               {
                 "system": "email",
                 "value": "ggro@bajajallianz.co.in"
@@ -445,526 +142,65 @@
               "coding": [
                 {
                   "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
-                  "code": "Care Specialist",
-                  "display": "Care Specialist"
+                  "code": "PATINF",
+                  "display": "Patient"
                 }
               ],
-              "text": "Care Specialist"
+              "text": "Senior Citizens"
             },
-            "name": [
-              {
-                "text": "care specialist"
-              }
-            ],
-            "telecom": [
-              {
-                "system": "phone",
-                "value": "+91 80809 45060"
-              }
-            ]
-          },
-          {
-            "purpose": {
-              "coding": [
-                {
-                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
-                  "code": "Customer Service (WhatsApp)",
-                  "display": "Customer Service (WhatsApp)"
-                }
-              ],
-              "text": "Customer Service (WhatsApp)"
+            "name": {
+              "text": "Senior Citizen Support"
             },
             "telecom": [
               {
-                "system": "phone",
-                "value": "+91 7507245858"
+                "system": "email",
+                "value": "seniorcitizen@bajajallianz.co.in"
               }
             ]
           }
         ],
-        "coverage": [
+        "network": [
           {
-            "extension": [
-              {
-                "extension": [
-                  {
-                    "url": "statement",
-                    "valueString": "If the Insured member is suffering from any illness or injury he / she can consult Medical Practitioner/ Physician/Doctor listed on the Digital platform of concerned service provider’s application via video, audio, or chat channel. This cover shall be in compliance with the Telemedicine Practice Guidelines dated 25th of March 2020 and as amended from time to time."
-                  }
-                ],
-                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
-              }
-            ],
-            "type": {
-              "coding": [
-                {
-                  "display": "Tele Consultation"
-                }
-              ]
-            },
-            "benefit": [
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Tele Consultation (GPs) - Individual Option 1"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 0.0
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "Unlimited"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Tele Consultation (All Specialties) - Individual Option 2"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 0.0
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "Unlimited"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Tele Consultation (All Specialties) - Individual Option 3"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 0.0
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "Unlimited"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Tele Consultation (All Specialties) - Individual Option 4"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 0.0
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "Unlimited"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Tele Consultation (All Specialties) - Individual Option 5"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 0.0
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "Unlimited"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Tele Consultation (All Specialties) - Individual Option 6"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 0.0
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "Unlimited"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Tele Consultation (All Specialties) - Family Floater Option 1"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 0.0
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "Unlimited"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Tele Consultation (All Specialties) - Family Floater Option 2"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 0.0
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "Unlimited"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Tele Consultation (All Specialties) - Family Floater Option 3"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 0.0
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "Unlimited"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            ]
+            "reference": "urn:uuid:995330b5-dcf1-487a-8031-fcc1bf9c8c52",
+            "display": "Prescribed network centers"
           },
           {
-            "extension": [
-              {
-                "extension": [
-                  {
-                    "url": "statement",
-                    "valueString": "If the Insured/Insured member/s is suffering from any illness or injury he / she can avail the service for investigations for pathology or radiology from prescribed network centers or outside prescribed network centers up the limit as specified under this Rider read with Base Policy Schedule."
-                  }
-                ],
-                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
-              }
-            ],
+            "reference": "urn:uuid:cba033a7-9343-4324-b266-a931332797cf",
+            "display": "Service provider's digital platform"
+          }
+        ],
+        "coverage": [
+          {
             "type": {
-              "coding": [
-                {
-                  "display": "Investigations (Pathology & Radiology)"
-                }
-              ]
+              "text": "Tele Consultation Cover"
             },
             "benefit": [
               {
                 "type": {
-                  "coding": [
-                    {
-                      "display": "Investigations (Pathology & Radiology) - Individual Option 1"
-                    }
-                  ]
+                  "text": "Tele Consultation (GPs/Specialists)"
                 },
                 "limit": [
                   {
                     "value": {
                       "value": 0.0,
-                      "unit": "INR"
+                      "unit": "Consultations"
                     },
                     "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "0 INR"
-                        }
-                      ]
+                      "text": "Unlimited Consultations"
                     }
                   }
                 ]
-              },
+              }
+            ]
+          },
+          {
+            "type": {
+              "text": "Investigations Cover"
+            },
+            "benefit": [
               {
                 "type": {
-                  "coding": [
-                    {
-                      "display": "Investigations (Pathology & Radiology) - Individual Option 2"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 1500.0,
-                      "unit": "INR"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "1500 INR"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Investigations (Pathology & Radiology) - Individual Option 3"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 3000.0,
-                      "unit": "INR"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "3000 INR"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Investigations (Pathology & Radiology) - Individual Option 4"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 5000.0,
-                      "unit": "INR"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "5000 INR"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Investigations (Pathology & Radiology) - Individual Option 5"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 7000.0,
-                      "unit": "INR"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "7000 INR"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Investigations (Pathology & Radiology) - Individual Option 6"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 15000.0,
-                      "unit": "INR"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "15000 INR"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Investigations (Pathology & Radiology) - Family Floater Option 1"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 10000.0,
-                      "unit": "INR"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "10000 INR"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Investigations (Pathology & Radiology) - Family Floater Option 2"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 20000.0,
-                      "unit": "INR"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "20000 INR"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Investigations (Pathology & Radiology) - Family Floater Option 3"
-                    }
-                  ]
+                  "text": "Pathology & Radiology"
                 },
                 "limit": [
                   {
@@ -973,13 +209,7 @@
                       "unit": "INR"
                     },
                     "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "25000 INR"
-                        }
-                      ]
+                      "text": "25000 INR"
                     }
                   }
                 ]
@@ -987,136 +217,13 @@
             ]
           },
           {
-            "extension": [
-              {
-                "extension": [
-                  {
-                    "url": "statement",
-                    "valueString": "If the Insured/Insured member/s is suffering from any illness or injury he / she can consult Medical Practitioner/ Physician/Doctor in person from prescribed network centers or the Insured/Insured member/s can consult Medical Practitioner/ Physician/Doctor outside prescribed network centers up to the limit as specified under the this Rider read with Base Policy Schedule."
-                  }
-                ],
-                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
-              }
-            ],
             "type": {
-              "coding": [
-                {
-                  "display": "Doctor Consultation"
-                }
-              ]
+              "text": "Doctor Consultation Cover"
             },
             "benefit": [
               {
                 "type": {
-                  "coding": [
-                    {
-                      "display": "Doctor Consultation - Individual Option 1"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 0.0,
-                      "unit": "INR"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "0 INR"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Doctor Consultation - Individual Option 2"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 0.0,
-                      "unit": "INR"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "0 INR"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Doctor Consultation - Individual Option 3"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 1000.0,
-                      "unit": "INR"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "1000 INR"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Doctor Consultation - Individual Option 4"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 2000.0,
-                      "unit": "INR"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "2000 INR"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Doctor Consultation - Individual Option 5"
-                    }
-                  ]
+                  "text": "Doctor Consultation"
                 },
                 "limit": [
                   {
@@ -1125,100 +232,7 @@
                       "unit": "INR"
                     },
                     "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "3000 INR"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Doctor Consultation - Individual Option 6"
-                    }
-                  ]
-                }
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Doctor Consultation - Family Floater Option 1"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 2.0,
-                      "unit": "Voucher"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "2 Voucher"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Doctor Consultation - Family Floater Option 2"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 2.0,
-                      "unit": "Voucher"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "2 Voucher"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Doctor Consultation - Family Floater Option 3"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 2.0,
-                      "unit": "Voucher"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "2 Voucher"
-                        }
-                      ]
+                      "text": "3000 INR"
                     }
                   }
                 ]
@@ -1226,188 +240,13 @@
             ]
           },
           {
-            "extension": [
-              {
-                "extension": [
-                  {
-                    "url": "statement",
-                    "valueString": "The Insured/Insured member/s can avail the free Preventive health checkup once in every Policy Year as per the list given below: Hemogram & ESR, Liver function test, Urine routine, Blood sugar - Fasting, HbA1C, Lipid profile, Blood urea, Serum creatinine, T3/T4/TSH, ECG. The health check-up can be availed on a cashless basis in the prescribed list of hospitals or diagnostic centers."
-                  }
-                ],
-                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
-              }
-            ],
             "type": {
-              "coding": [
-                {
-                  "display": "Annual Preventive Health Check-up"
-                }
-              ]
+              "text": "Annual Preventive Health check-up cover"
             },
             "benefit": [
               {
                 "type": {
-                  "coding": [
-                    {
-                      "display": "Annual Preventive Health Check-up - Individual Option 1"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 1.0,
-                      "unit": "Voucher"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "1 Voucher"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Annual Preventive Health Check-up - Individual Option 2"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 1.0,
-                      "unit": "Voucher"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "1 Voucher"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Annual Preventive Health Check-up - Individual Option 3"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 1.0,
-                      "unit": "Voucher"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "1 Voucher"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Annual Preventive Health Check-up - Individual Option 4"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 1.0,
-                      "unit": "Voucher"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "1 Voucher"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Annual Preventive Health Check-up - Individual Option 5"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 1.0,
-                      "unit": "Voucher"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "1 Voucher"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Annual Preventive Health Check-up - Individual Option 6"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 1.0,
-                      "unit": "Voucher"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "1 Voucher"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Annual Preventive Health Check-up - Family Floater Option 1"
-                    }
-                  ]
+                  "text": "Health Check-up Voucher"
                 },
                 "limit": [
                   {
@@ -1416,65 +255,7 @@
                       "unit": "Voucher"
                     },
                     "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "2 Voucher"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Annual Preventive Health Check-up - Family Floater Option 2"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 2.0,
-                      "unit": "Voucher"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "2 Voucher"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Annual Preventive Health Check-up - Family Floater Option 3"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 2.0,
-                      "unit": "Voucher"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "2 Voucher"
-                        }
-                      ]
+                      "text": "2 Voucher"
                     }
                   }
                 ]
@@ -1488,7 +269,7 @@
               {
                 "use": "official",
                 "system": "http://code.workz.com",
-                "value": "urn:uuid:f270baf0-dfe8-4086-acae-100bdffaf1c4"
+                "value": "urn:uuid:3424dff8-ecdb-4895-888f-87b61067f94f"
               }
             ],
             "type": {
@@ -1498,15 +279,112 @@
                   "code": "01",
                   "display": "Individual"
                 }
-              ]
-            }
+              ],
+              "text": "Individual"
+            },
+            "specificCost": [
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                      "code": "UNK",
+                      "display": "unknown"
+                    }
+                  ],
+                  "text": "Online/Direct Business Discount"
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                          "code": "UNK",
+                          "display": "unknown"
+                        }
+                      ],
+                      "text": "Discount for online purchase"
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "text": "Deductible"
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ],
+                          "text": "In Network"
+                        },
+                        "value": {
+                          "value": 5.0,
+                          "unit": "%"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                      "code": "UNK",
+                      "display": "unknown"
+                    }
+                  ],
+                  "text": "Employee Discount"
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                          "code": "UNK",
+                          "display": "unknown"
+                        }
+                      ],
+                      "text": "Discount for Bajaj Allianz employees"
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "text": "Deductible"
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ],
+                          "text": "In Network"
+                        },
+                        "value": {
+                          "value": 20.0,
+                          "unit": "%"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
             "identifier": [
               {
                 "use": "official",
                 "system": "http://code.workz.com",
-                "value": "urn:uuid:29f7455c-4e85-4dfa-82ed-c4c7e7f5f6b6"
+                "value": "urn:uuid:fd442f07-1261-41b5-b37c-c9dc4578d4d3"
               }
             ],
             "type": {
@@ -1516,27 +394,138 @@
                   "code": "02",
                   "display": "Family Floater"
                 }
-              ]
-            }
+              ],
+              "text": "Family Floater"
+            },
+            "specificCost": [
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                      "code": "UNK",
+                      "display": "unknown"
+                    }
+                  ],
+                  "text": "Family Discount (2 members)"
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                          "code": "UNK",
+                          "display": "unknown"
+                        }
+                      ],
+                      "text": "Discount for 2 family members"
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "text": "Deductible"
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ],
+                          "text": "In Network"
+                        },
+                        "value": {
+                          "value": 10.0,
+                          "unit": "%"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                      "code": "UNK",
+                      "display": "unknown"
+                    }
+                  ],
+                  "text": "Family Discount (>2 members)"
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                          "code": "UNK",
+                          "display": "unknown"
+                        }
+                      ],
+                      "text": "Discount for more than 2 family members"
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "text": "Deductible"
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ],
+                          "text": "In Network"
+                        },
+                        "value": {
+                          "value": 15.0,
+                          "unit": "%"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
     },
     {
-      "fullUrl": "urn:uuid:9983c685-c628-4c28-ab49-00e98e0c89a4",
+      "fullUrl": "urn:uuid:c0f6e241-d04f-412a-87f6-5f735704df7a",
       "resource": {
         "resourceType": "Organization",
-        "id": "9983c685-c628-4c28-ab49-00e98e0c89a4",
+        "id": "c0f6e241-d04f-412a-87f6-5f735704df7a",
         "meta": {
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
           ]
         },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\"><p>Organisation: Bajaj Allianz General Insurance Co. Ltd.</p></div>"
+        },
         "identifier": [
           {
             "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PRN",
+                  "display": "Provider number"
+                }
+              ],
+              "text": "Provider number"
+            },
             "system": "https://www.irdai.gov.in/identifier/insurer",
-            "value": "urn:uuid:45388e2c-619d-4928-945a-8e9801e43535"
+            "value": "Bajaj Allianz General Insurance Co. Ltd."
           }
         ],
         "name": "Bajaj Allianz General Insurance Co. Ltd.",
@@ -1558,6 +547,98 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:995330b5-dcf1-487a-8031-fcc1bf9c8c52",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "995330b5-dcf1-487a-8031-fcc1bf9c8c52",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\"><p>Network: Prescribed network centers</p></div>"
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PRN",
+                  "display": "Provider number"
+                }
+              ],
+              "text": "Provider number"
+            },
+            "system": "http://code.workz.com",
+            "value": "Prescribed network centers"
+          }
+        ],
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          }
+        ],
+        "name": "Prescribed network centers"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:cba033a7-9343-4324-b266-a931332797cf",
+      "resource": {
+        "resourceType": "Organization",
+        "id": "cba033a7-9343-4324-b266-a931332797cf",
+        "meta": {
+          "profile": [
+            "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
+          ]
+        },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\"><p>Network: Service provider's digital platform</p></div>"
+        },
+        "identifier": [
+          {
+            "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PRN",
+                  "display": "Provider number"
+                }
+              ],
+              "text": "Provider number"
+            },
+            "system": "http://code.workz.com",
+            "value": "Service provider's digital platform"
+          }
+        ],
+        "type": [
+          {
+            "coding": [
+              {
+                "system": "http://terminology.hl7.org/CodeSystem/organization-type",
+                "code": "prov",
+                "display": "Healthcare Provider"
+              }
+            ],
+            "text": "Healthcare Provider"
+          }
+        ],
+        "name": "Service provider's digital platform"
       }
     }
   ]

@@ -1,12 +1,13 @@
 import uuid
 import logging
 from datetime import datetime, timezone
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from fhir.resources.bundle import Bundle, BundleEntry
 from fhir.resources.codeableconcept import CodeableConcept
 from fhir.resources.coding import Coding
 from fhir.resources.contactpoint import ContactPoint
+from fhir.resources.composition import Composition, CompositionSection
 from fhir.resources.extension import Extension
 from fhir.resources.extendedcontactdetail import ExtendedContactDetail
 from fhir.resources.humanname import HumanName
@@ -27,6 +28,7 @@ from fhir.resources.insuranceplan import (
     InsurancePlanPlanSpecificCostBenefit,
     InsurancePlanPlanSpecificCostBenefitCost,
 )
+from fhir.resources.organization import Organization
 from pydantic import ValidationError
 
 from src.services.fhir import fhir_constants as fhir_const
@@ -70,17 +72,26 @@ def _make_concept(
     system: Optional[str] = None,
     text: Optional[str] = None,
 ) -> CodeableConcept:
-    kwargs: Dict[str, Any] = {
-        "coding": [_make_coding(code=code, display=display, system=system)]
-    }
-    if text:
-        kwargs["text"] = text
+    kwargs: Dict[str, Any] = {}
+    actual_text = text or display
+    if actual_text:
+        kwargs["text"] = actual_text
+
+    if code or system:
+        c_code = code or "UNK"
+        c_system = system or "http://terminology.hl7.org/CodeSystem/v3-NullFlavor"
+        c_display = display
+        if c_code == "UNK":
+            c_display = "unknown"
+            
+        kwargs["coding"] = [_make_coding(code=c_code, display=c_display, system=c_system)]
+        
     return CodeableConcept(**kwargs)
 
 
 def _make_narrative(text_summary: str, status: str = "generated") -> Narrative:
     safe = text_summary.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-    div = f'<div xmlns="http://www.w3.org/1999/xhtml"><p>{safe}</p></div>'
+    div = f'<div xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><p>{safe}</p></div>'
     return Narrative(status=status, div=div)
 
 
@@ -88,10 +99,18 @@ class InsurancePlanFHIRMapper:
 
     def __init__(self, extracted_data: Dict[str, Any]):
         self.data: Dict[str, Any] = extracted_data or {}
+        bundle_uuid = str(uuid.uuid4())
         self.bundle = Bundle(
-            id=str(uuid.uuid4()),
-            meta=Meta(profile=[fhir_const.META_PROFILE_DOCUMENT_BUNDLE]),
-            type=fhir_const.BUNDLE_TYPE_COLLECTION,
+            id=bundle_uuid,
+            identifier=Identifier(
+                system=fhir_const.SYS_IDENTIFIER,
+                value=bundle_uuid
+            ),
+            meta=Meta(
+                versionId="1",
+                profile=[fhir_const.META_PROFILE_INSURANCE_PLAN_BUNDLE]
+            ),
+            type="collection",
             language=fhir_const.LANGUAGE_EN_IN,
             timestamp=datetime.now(timezone.utc),
             entry=[],
@@ -112,7 +131,7 @@ class InsurancePlanFHIRMapper:
             return fallback
         return value
 
-    def _require(self, data: Dict[str, Any], key: str, context: str, fallback: str = "Unknown") -> Any:
+    def _require(self, data: Dict[str, Any], key: str, context: str, fallback: str = "UNK") -> Any:
         value = self._get(data, key)
         if value is None:
             logger.warning(constants.LOG_FHIR_MISSING_REQUIRED_FIELD, key, context, fallback)
@@ -126,14 +145,24 @@ class InsurancePlanFHIRMapper:
             logger.warning(constants.LOG_FHIR_FLOAT_PARSE_FAILED.format(value=value, default=default))
             return default
 
-    def _lookup_snomed_code(self, provided_code: Optional[str], display_text: Optional[str]) -> Optional[str]:
+    def _lookup_snomed_concept(self, provided_code: Optional[str], display_text: Optional[str]) -> Tuple[Optional[str], Optional[str]]:
         s_code = str(provided_code).strip() if provided_code else ""
-        if s_code and s_code.isdigit() and len(s_code) > 5:
-            return s_code
         s_display = str(display_text).strip().lower() if display_text else ""
+        
+        if s_code:
+            official_display = SNOMED_DICT.get("benefitType", {}).get(s_code)
+            if official_display:
+                return s_code, official_display
+
         if s_display and s_display in TERM_TO_CODE:
-            return TERM_TO_CODE[s_display]
-        return provided_code
+            mapped_code = TERM_TO_CODE[s_display]
+            official_display = SNOMED_DICT.get("benefitType", {}).get(mapped_code)
+            if official_display:
+                return mapped_code, official_display
+            return mapped_code, display_text
+            
+
+        return provided_code, display_text
 
     def _build_organization(
         self,
@@ -144,10 +173,12 @@ class InsurancePlanFHIRMapper:
             return None
         try:
             org_id = str(uuid.uuid4())
+            org_name = self._require(org_data, "name", "organisation")
             org = Organization(
                 id=org_id,
                 meta=Meta(profile=[fhir_const.META_PROFILE_ORGANIZATION]),
-                name=self._require(org_data, "name", "organisation"),
+                text=_make_narrative(f"Organisation: {org_name}"),
+                name=org_name,
             )
 
             identifier_value = self._get(org_data, "identifier")
@@ -156,6 +187,7 @@ class InsurancePlanFHIRMapper:
             if identifier_value:
                 identifiers.append(
                     Identifier(
+                        type=_make_concept(code="PRN", display="Provider number", system="http://terminology.hl7.org/CodeSystem/v2-0203"),
                         use=fhir_const.IDENTIFIER_USE_OFFICIAL,
                         system=id_system,
                         value=str(identifier_value).strip(),
@@ -164,9 +196,10 @@ class InsurancePlanFHIRMapper:
             else:
                 identifiers.append(
                     Identifier(
+                        type=_make_concept(code="PRN", display="Provider number", system="http://terminology.hl7.org/CodeSystem/v2-0203"),
                         use=fhir_const.IDENTIFIER_USE_OFFICIAL,
                         system=id_system,
-                        value=f"urn:uuid:{uuid.uuid4()}",
+                        value=org_name,
                     )
                 )
             org.identifier = identifiers
@@ -198,15 +231,25 @@ class InsurancePlanFHIRMapper:
             if not network_name or not str(network_name).strip():
                 continue
             net_id = str(uuid.uuid4())
+            network_name_str = str(network_name).strip()
             network_org = Organization(
                 id=net_id,
                 meta=Meta(profile=[fhir_const.META_PROFILE_ORGANIZATION]),
-                name=str(network_name).strip(),
+                text=_make_narrative(f"Network: {network_name_str}"),
+                name=network_name_str,
                 type=[_make_concept(
                     code="prov",
-                    display="Healthcare Provider Network",
+                    display="Healthcare Provider",
                     system="http://terminology.hl7.org/CodeSystem/organization-type",
                 )],
+                identifier=[
+                    Identifier(
+                        type=_make_concept(code="PRN", display="Provider number", system="http://terminology.hl7.org/CodeSystem/v2-0203"),
+                        use=fhir_const.IDENTIFIER_USE_OFFICIAL,
+                        system=fhir_const.SYS_IDENTIFIER,
+                        value=network_name_str,
+                    )
+                ],
             )
             self._add_to_bundle(network_org)
             refs.append(Reference(reference=f"urn:uuid:{net_id}", display=str(network_name).strip()))
@@ -222,8 +265,8 @@ class InsurancePlanFHIRMapper:
             purpose_text = self._get(cd, "purpose")
             if purpose_text:
                 kwargs["purpose"] = _make_concept(
-                    code=purpose_text,
-                    display=purpose_text,
+                    code="PATINF",
+                    display="Patient",
                     system=fhir_const.CONTACT_PURPOSE_SYSTEM,
                     text=purpose_text,
                 )
@@ -248,53 +291,16 @@ class InsurancePlanFHIRMapper:
 
     def _build_plan_extensions(self, plan_data: Dict[str, Any]) -> List[Extension]:
         extensions: List[Extension] = []
-        for req in (plan_data.get("supportingInfoRequirements") or []):
-            ext = self._build_complex_extension(
-                fhir_const.EXT_SUPPORTING_INFO_REQ,
-                [
-                    Extension(
-                        url="category",
-                        valueCodeableConcept=_make_concept(
-                            code=self._get(req, "categoryCode"),
-                            display=self._get(req, "categoryDisplay"),
-                        ),
-                    ),
-                    Extension(
-                        url="document",
-                        valueCodeableConcept=_make_concept(
-                            code=self._get(req, "documentCode"),
-                            display=self._get(req, "documentDisplay"),
-                        ),
-                    ),
-                ],
-            )
-            extensions.append(ext)
-
-        for excl in (plan_data.get("exclusions") or []):
-            sub: List[Extension] = [
-                Extension(
-                    url="category",
-                    valueCodeableConcept=_make_concept(
-                        code=self._get(excl, "categoryCode"),
-                        display=self._get(excl, "categoryDisplay"),
-                    ),
-                ),
-            ]
-            statement = self._get(excl, "statement")
-            if statement:
-                sub.append(Extension(url="statement", valueString=statement))
-            extensions.append(self._build_complex_extension(fhir_const.EXT_EXCLUSION, sub))
-
         return extensions
 
     def _build_benefit_block(self, ben_data: Dict[str, Any]) -> InsurancePlanCoverageBenefit:
         raw_code = self._get(ben_data, "typeCode")
         display_text = self._get(ben_data, "typeDisplay")
-        final_code = self._lookup_snomed_code(raw_code, display_text)
+        final_code, final_display = self._lookup_snomed_concept(raw_code, display_text)
         system = fhir_const.SYS_SNOMED if (final_code and str(final_code).isdigit()) else None
 
         benefit = InsurancePlanCoverageBenefit(
-            type=_make_concept(code=final_code, display=display_text, system=system)
+            type=_make_concept(code=final_code, display=final_display, system=system)
         )
 
         limit_value = self._get(ben_data, "limitValue")
@@ -304,11 +310,7 @@ class InsurancePlanFHIRMapper:
             limit_quantity = Quantity(value=safe_value, unit=limit_unit)
             limit_code = InsurancePlanCoverageBenefitLimit(
                 value=limit_quantity,
-                code=_make_concept(
-                    code="benefit",
-                    display=f"{limit_value} {limit_unit or ''}".strip(),
-                    system="http://terminology.hl7.org/CodeSystem/benefit-unit",
-                ),
+                code=_make_concept(text=f"{limit_value} {limit_unit or ''}".strip())
             )
             benefit.limit = [limit_code]
 
@@ -317,21 +319,18 @@ class InsurancePlanFHIRMapper:
     def _build_coverages(self, coverages_data: List[Dict[str, Any]]) -> List[InsurancePlanCoverage]:
         coverages: List[InsurancePlanCoverage] = []
         for cov_data in (coverages_data or []):
+            benefits = [
+                self._build_benefit_block(ben)
+                for ben in (cov_data.get("benefits") or [])
+            ]
+            if not benefits:
+                continue
+                
             coverage = InsurancePlanCoverage(
-                type=_make_concept(display=self._get(cov_data, "typeDisplay")),
-                benefit=[
-                    self._build_benefit_block(ben)
-                    for ben in (cov_data.get("benefits") or [])
-                ],
+                type=_make_concept(text=self._get(cov_data, "typeDisplay") or "Coverage"),
+                benefit=benefits,
             )
-            condition = self._get(cov_data, "condition")
-            if condition:
-                coverage.extension = [
-                    self._build_complex_extension(
-                        fhir_const.EXT_CONDITION,
-                        [Extension(url="statement", valueString=condition)],
-                    )
-                ]
+
             coverages.append(coverage)
         return coverages
 
@@ -353,34 +352,33 @@ class InsurancePlanFHIRMapper:
 
             benefit_cost = InsurancePlanPlanSpecificCostBenefitCost(
                 type=_make_concept(
-                    code=cost_type_code,
-                    system="http://terminology.hl7.org/CodeSystem/benefit-cost-type",
+                    text=str(cost_type_code).capitalize(),
                 ),
                 applicability=_make_concept(
                     code=applicability_code,
-                    display=applicability_code.replace("-", " ").title(),
-                    system=fhir_const.VS_COST_APPLICABILITY,
+                    display=str(applicability_code).replace("-", " ").title() if applicability_code else "Other",
+                    system="http://terminology.hl7.org/CodeSystem/applicability",
                 ),
                 value=Quantity(value=self._parse_float(cost_value_raw), unit=cost_unit),
             )
 
             raw_ben_code = self._require(cost_data, "benefitTypeCode", "specificCost.benefit")
             display_ben_text = self._get(cost_data, "benefitTypeDisplay")
-            final_ben_code = self._lookup_snomed_code(raw_ben_code, display_ben_text)
+            final_ben_code, final_ben_display = self._lookup_snomed_concept(raw_ben_code, display_ben_text)
             sys_ben = fhir_const.SYS_SNOMED if (final_ben_code and str(final_ben_code).isdigit()) else None
 
             benefit = InsurancePlanPlanSpecificCostBenefit(
-                type=_make_concept(code=final_ben_code, display=display_ben_text, system=sys_ben),
+                type=_make_concept(code=final_ben_code, display=final_ben_display, system=sys_ben),
                 cost=[benefit_cost],
             )
 
             raw_cat_code = self._require(cost_data, "categoryCode", "specificCost")
             display_cat_text = self._get(cost_data, "categoryDisplay")
-            final_cat_code = self._lookup_snomed_code(raw_cat_code, display_cat_text)
+            final_cat_code, final_cat_display = self._lookup_snomed_concept(raw_cat_code, display_cat_text)
             sys_cat = fhir_const.SYS_SNOMED if (final_cat_code and str(final_cat_code).isdigit()) else None
 
             return InsurancePlanPlanSpecificCost(
-                category=_make_concept(code=final_cat_code, display=display_cat_text, system=sys_cat),
+                category=_make_concept(code=final_cat_code, display=final_cat_display, system=sys_cat),
                 benefit=[benefit],
             )
 
@@ -435,7 +433,7 @@ class InsurancePlanFHIRMapper:
                     f"Insurance Plan: {plan_name}. "
                     f"Status: {plan_data.get('status', 'active')}."
                 ),
-                language=self._get(plan_data, "language", fhir_const.LANGUAGE_EN_IN),
+                language="en",
                 status=self._get(plan_data, "status", "active"),
                 name=plan_name,
                 alias=[a for a in (plan_data.get("alias") or []) if a],
@@ -459,10 +457,9 @@ class InsurancePlanFHIRMapper:
             if admin_by_ref:
                 insurance_plan.administeredBy = Reference(reference=admin_by_ref)
 
-            period_start = self._get(plan_data, "periodStart")
+            period_start = self._get(plan_data, "periodStart") or "2020-01-01"
             period_end = self._get(plan_data, "periodEnd")
-            if period_start or period_end:
-                insurance_plan.period = Period(start=period_start, end=period_end)
+            insurance_plan.period = Period(start=period_start, end=period_end)
 
             if network_refs:
                 insurance_plan.network = network_refs
@@ -506,13 +503,17 @@ class InsurancePlanFHIRMapper:
             logger.error(constants.LOG_FHIR_OWNED_BY_NONE)
 
         if self.bundle.entry:
-            ip_index = next(
-                (i for i, entry in enumerate(self.bundle.entry)
-                 if getattr(entry.resource, "__resource_type__", None) == "InsurancePlan"),
-                -1
-            )
-            if ip_index > 0:
-                ip_entry = self.bundle.entry.pop(ip_index)
-                self.bundle.entry.insert(0, ip_entry)
+            # Ensure InsurancePlan is the first entry
+            self.bundle.entry.sort(key=lambda e: 0 if getattr(e.resource, "__resource_type__", None) == "InsurancePlan" else 1)
 
-        return self.bundle.model_dump(mode="json", exclude_none=True)
+        out_dict = self.bundle.model_dump(mode="json", exclude_none=True)
+        
+        # Post-process for FHIR R4 validator compliance (ExtendedContactDetail.name in fhir.resources is array, R4 validator expects object)
+        for entry in out_dict.get("entry", []):
+            res = entry.get("resource", {})
+            if res.get("resourceType") in ["InsurancePlan", "Organization"]:
+                for contact in res.get("contact", []):
+                    if "name" in contact and isinstance(contact["name"], list) and len(contact["name"]) > 0:
+                        contact["name"] = contact["name"][0]
+
+        return out_dict

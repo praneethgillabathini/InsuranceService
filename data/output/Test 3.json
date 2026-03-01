@@ -1,429 +1,40 @@
 {
   "resourceType": "Bundle",
-  "id": "360a847e-d5d6-4b8f-ae56-dd23417185e3",
+  "id": "3d6c8fa4-3831-4ae6-8fc0-5b86fb292c3c",
   "meta": {
+    "versionId": "1",
     "profile": [
-      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/DocumentBundle"
+      "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlanBundle"
     ]
   },
   "language": "en-IN",
+  "identifier": {
+    "system": "http://code.workz.com",
+    "value": "3d6c8fa4-3831-4ae6-8fc0-5b86fb292c3c"
+  },
   "type": "collection",
-  "timestamp": "2026-02-27T23:08:40.582541Z",
+  "timestamp": "2026-03-01T08:04:46.027931Z",
   "entry": [
     {
-      "fullUrl": "urn:uuid:8ee994cc-426c-4384-9c62-9e3ae3cb6cc5",
+      "fullUrl": "urn:uuid:28ed5ebf-8eff-40f9-9220-4f7d4d35b2c8",
       "resource": {
         "resourceType": "InsurancePlan",
-        "id": "8ee994cc-426c-4384-9c62-9e3ae3cb6cc5",
+        "id": "28ed5ebf-8eff-40f9-9220-4f7d4d35b2c8",
         "meta": {
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/InsurancePlan"
           ]
         },
-        "language": "en-IN",
+        "language": "en",
         "text": {
           "status": "generated",
-          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><p>Insurance Plan: Saral Suraksha Bima, Aditya Birla Health Insurance Co. Limited. Status: active.</p></div>"
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\"><p>Insurance Plan: Saral Suraksha Bima, Aditya Birla Health Insurance Co. Limited. Status: active.</p></div>"
         },
-        "extension": [
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "code": "POI",
-                      "display": "Proof of Identity"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "document",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "Photo Identity Proof of the insured person"
-                    }
-                  ]
-                }
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "code": "POI",
-                      "display": "Proof of Identity"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "document",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "Identity proof of Nominee"
-                    }
-                  ]
-                }
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "code": "POI",
-                      "display": "Proof of Identity"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "document",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "Photo Identity Proof of Child"
-                    }
-                  ]
-                }
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "code": "POI",
-                      "display": "Proof of Identity"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "document",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "Age proof of Child"
-                    }
-                  ]
-                }
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-SupportingInfoRequirement"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "code": "Excl04",
-                      "display": "Investigation & Evaluation"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Expenses related to any admission primarily for diagnostics and evaluation purposes."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "code": "Excl04",
-                      "display": "Investigation & Evaluation"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Any diagnostic expenses which are not related or not incidental to the current diagnosis and treatment."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "code": "Excl14",
-                      "display": "Dietary Supplements"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Dietary supplements and substances that can be purchased without prescription, including but not limited to Vitamins, minerals and organic substances unless prescribed by a medical practitioner as part of hospitalization claim or day care procedure"
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "Specific Exclusion for Hospitalisation Expenses"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Expenses incurred for treatment of accidental injuries which does not warrant hospitalization."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "Specific Exclusion for Hospitalisation Expenses"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Any expenses incurred on Domiciliary Hospitalization and OPD treatment."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "Specific Exclusion for Hospitalisation Expenses"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Treatment taken outside the geographical limits of India."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "Specific Exclusion for Hospitalisation Expenses"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "All expenses listed in Annexure-B (List I) of the Policy."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "General Exclusion"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Any claim for death or disablement (whether of a permanent nature or of a temporary nature), hospitalisation of the insured person, directly or indirectly due to War (whether declared or not) and war like occurrence or invasion, acts of foreign enemies, hostilities, civil war, rebellion, revolutions, insurrections, mutiny, military or usurped power, seizure, capture, arrest, restraints and detainment of all kinds."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "General Exclusion"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Any claim for death, disablement (whether of a permanent nature or of a temporary nature), hospitalization of Insured Person From intentional self-injury unless in self-defense or to save life, suicide or attempted suicide;"
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "General Exclusion"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Any claim for death, disablement (whether of a permanent nature or of a temporary nature), hospitalization of Insured Person Whilst under the influence of intoxicating liquor or drugs or other intoxicants except where the insured is not directly responsible for the injury / accident though under influence of intoxication."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "General Exclusion"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Any claim for death, disablement (whether of a permanent nature or of a temporary nature), hospitalization of Insured Person Whilst engaging in aviation or ballooning, or whilst mounting into, or dismounting from or travelling in any balloon or aircraft other than as a passenger (fare-paying or otherwise) in any Scheduled Airlines in the world."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "General Exclusion"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Any claim for death, disablement (whether of a permanent nature or of a temporary nature), hospitalization of Insured Person arising or resulting from the Insured Person committing any breach of law with criminal intent."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "General Exclusion"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Any claim for death, disablement (whether of a permanent nature or of a temporary nature), hospitalization of Insured Person due to participation as a professional in hazardous or adventure sports, including but not limited to, para-jumping, rock climbing, mountaineering, rafting, motor racing, horse racing or scuba diving, hand gliding, sky diving, deep-sea diving."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "General Exclusion"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Any claim resulting or arising from or any consequential loss directly or indirectly caused by or contributed to or arising from: Ionizing radiation or contamination by radioactivity from any nuclear fuel or from any nuclear waste from the combustion of nuclear fuel or from any nuclear waste from combustion (including any self-sustaining process of nuclear fission) of nuclear fuel; Nuclear weapons material; The radioactive, toxic, explosive or other hazardous properties of any explosive nuclear assembly or nuclear component thereof; Nuclear, chemical and biological terrorism."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          },
-          {
-            "extension": [
-              {
-                "url": "category",
-                "valueCodeableConcept": {
-                  "coding": [
-                    {
-                      "display": "General Exclusion"
-                    }
-                  ]
-                }
-              },
-              {
-                "url": "statement",
-                "valueString": "Any loss arising out of the Insured Person's actual or attempted commission of or willful participation in an illegal act or any violation or attempted violation of the law."
-              }
-            ],
-            "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Exclusion"
-          }
-        ],
         "identifier": [
           {
             "use": "official",
             "system": "http://code.workz.com",
-            "value": "urn:uuid:811aa3c1-1c3b-46f6-b93b-f39e1d9d1b12"
+            "value": "urn:uuid:81366a1a-ddaa-46dc-bdfe-b16da466c0e9"
           }
         ],
         "status": "active",
@@ -435,15 +46,24 @@
                 "code": "05",
                 "display": "Personal Accident"
               }
-            ]
+            ],
+            "text": "Personal Accident"
           }
         ],
         "name": "Saral Suraksha Bima, Aditya Birla Health Insurance Co. Limited",
-        "alias": [],
+        "alias": [
+          "ADIPAIP21628V012021"
+        ],
+        "period": {
+          "start": "2020-01-01"
+        },
         "ownedBy": {
-          "reference": "urn:uuid:38961561-893a-4560-9ae7-03c92dda126a"
+          "reference": "urn:uuid:b517a2c6-72e8-443c-b977-af8ba0e87696"
         },
         "coverageArea": [
+          {
+            "display": "India"
+          },
           {
             "display": "Worldwide"
           }
@@ -454,11 +74,14 @@
               "coding": [
                 {
                   "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
-                  "code": "Customer Service & Claims",
-                  "display": "Customer Service & Claims"
+                  "code": "PATINF",
+                  "display": "Patient"
                 }
               ],
-              "text": "Customer Service & Claims"
+              "text": "Customer Service"
+            },
+            "name": {
+              "text": "Customer Care"
             },
             "telecom": [
               {
@@ -476,11 +99,14 @@
               "coding": [
                 {
                   "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
-                  "code": "Grievance (Senior Citizens)",
-                  "display": "Grievance (Senior Citizens)"
+                  "code": "PATINF",
+                  "display": "Patient"
                 }
               ],
-              "text": "Grievance (Senior Citizens)"
+              "text": "Senior Citizen Support"
+            },
+            "name": {
+              "text": "Senior Citizen Cell"
             },
             "telecom": [
               {
@@ -492,51 +118,51 @@
                 "value": "seniorcitizen.abh@adityabirla.com"
               }
             ]
+          },
+          {
+            "purpose": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/contactentity-type",
+                  "code": "PATINF",
+                  "display": "Patient"
+                }
+              ],
+              "text": "Grievance Redressal"
+            },
+            "name": {
+              "text": "Grievance Officer"
+            },
+            "telecom": [
+              {
+                "system": "phone",
+                "value": "1800 270 7000"
+              },
+              {
+                "system": "email",
+                "value": "care.healthinsurance@adityabirlacapital.com"
+              }
+            ]
           }
         ],
         "coverage": [
           {
-            "extension": [
-              {
-                "extension": [
-                  {
-                    "url": "statement",
-                    "valueString": "due to an Injury sustained in an Accident during the Policy Period, provided that the Insured Person’s death occurs within 12 months from the date of the Accident."
-                  }
-                ],
-                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
-              }
-            ],
             "type": {
-              "coding": [
-                {
-                  "display": "Death Benefit (Accident)"
-                }
-              ]
+              "text": "Accidental Death"
             },
             "benefit": [
               {
                 "type": {
-                  "coding": [
-                    {
-                      "display": "Sum Insured"
-                    }
-                  ]
+                  "text": "Death Benefit"
                 },
                 "limit": [
                   {
                     "value": {
                       "value": 100.0,
-                      "unit": "%"
+                      "unit": "Percentage of Sum Insured"
                     },
                     "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "100 %"
-                        }
-                      ]
+                      "text": "100 Percentage of Sum Insured"
                     }
                   }
                 ]
@@ -544,47 +170,22 @@
             ]
           },
           {
-            "extension": [
-              {
-                "extension": [
-                  {
-                    "url": "statement",
-                    "valueString": "solely and directly due to an Accident during the Policy Period, provided that the Permanent Total Disablement occurs within 12 months from the date of the Accident"
-                  }
-                ],
-                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
-              }
-            ],
             "type": {
-              "coding": [
-                {
-                  "display": "Permanent Total Disablement (Accident)"
-                }
-              ]
+              "text": "Permanent Total Disablement"
             },
             "benefit": [
               {
                 "type": {
-                  "coding": [
-                    {
-                      "display": "Sum Insured"
-                    }
-                  ]
+                  "text": "PTD Benefit"
                 },
                 "limit": [
                   {
                     "value": {
                       "value": 100.0,
-                      "unit": "%"
+                      "unit": "Percentage of Sum Insured"
                     },
                     "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "100 %"
-                        }
-                      ]
+                      "text": "100 Percentage of Sum Insured"
                     }
                   }
                 ]
@@ -592,211 +193,61 @@
             ]
           },
           {
-            "extension": [
-              {
-                "extension": [
-                  {
-                    "url": "statement",
-                    "valueString": "solely and directly due to an Accident during the Policy Period provided that the Permanent Partial Disablement shall occur within 12 months of the date of the Accident"
-                  }
-                ],
-                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
-              }
-            ],
             "type": {
-              "coding": [
-                {
-                  "display": "Permanent Partial Disablement (Accident)"
-                }
-              ]
+              "text": "Hospitalisation Expenses due to Accident"
             },
             "benefit": [
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Percentage of Sum Insured for specified bodily losses"
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "extension": [
-              {
-                "extension": [
-                  {
-                    "url": "statement",
-                    "valueString": "If the Insured Person sustains an Injury in an Accident during the Policy Period and which completely incapacitates the Insured Person from engaging in any employment or occupation of any description whatsoever which the Insured Person was capable of performing at the time of the Accident"
-                  }
-                ],
-                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
-              }
-            ],
-            "type": {
-              "coding": [
-                {
-                  "display": "Temporary Total Disablement (Accident)"
-                }
-              ]
-            },
-            "benefit": [
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Benefit as specified in policy schedule (max 100 weeks)"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 100.0,
-                      "unit": "weeks"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "100 weeks"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "extension": [
-              {
-                "extension": [
-                  {
-                    "url": "statement",
-                    "valueString": "arising due to accident during the policy period"
-                  }
-                ],
-                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
-              }
-            ],
-            "type": {
-              "coding": [
-                {
-                  "display": "Hospitalisation Expenses due to Accident"
-                }
-              ]
-            },
-            "benefit": [
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "Medical expenses for hospitalisation"
-                    }
-                  ]
-                },
-                "limit": [
-                  {
-                    "value": {
-                      "value": 10.0,
-                      "unit": "% of Base Sum Insured"
-                    },
-                    "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "10 % of Base Sum Insured"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              },
               {
                 "type": {
                   "coding": [
                     {
                       "system": "http://snomed.info/sct",
-                      "code": "49122002",
-                      "display": "Road Ambulance"
+                      "code": "568291000005106",
+                      "display": "Hospital unit"
                     }
-                  ]
+                  ],
+                  "text": "Hospital unit (Room Rent)"
                 },
                 "limit": [
                   {
                     "value": {
-                      "value": 2000.0,
-                      "unit": "INR per hospitalization"
+                      "value": 10.0,
+                      "unit": "Percentage of Base Sum Insured"
                     },
                     "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "2000 INR per hospitalization"
-                        }
-                      ]
+                      "text": "10 Percentage of Base Sum Insured"
                     }
                   }
                 ]
               },
               {
                 "type": {
-                  "coding": [
-                    {
-                      "display": "All day care treatments"
-                    }
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            "extension": [
-              {
-                "extension": [
-                  {
-                    "url": "statement",
-                    "valueString": "Following an admissible claim of the insured person under the policy towards Death or Permanent Total Disability of the insured person, to all dependent children pursuing full-time education, aged up to 25 years."
-                  }
-                ],
-                "url": "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Claim-Condition"
-              }
-            ],
-            "type": {
-              "coding": [
-                {
-                  "display": "Education Grant"
-                }
-              ]
-            },
-            "benefit": [
-              {
-                "type": {
-                  "coding": [
-                    {
-                      "display": "One-time Educational Grant"
-                    }
-                  ]
+                  "text": "ICU Charges"
                 },
                 "limit": [
                   {
                     "value": {
                       "value": 10.0,
-                      "unit": "% of Base Sum Insured per child"
+                      "unit": "Percentage of Base Sum Insured"
                     },
                     "code": {
-                      "coding": [
-                        {
-                          "system": "http://terminology.hl7.org/CodeSystem/benefit-unit",
-                          "code": "benefit",
-                          "display": "10 % of Base Sum Insured per child"
-                        }
-                      ]
+                      "text": "10 Percentage of Base Sum Insured"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": {
+                  "text": "AYUSH Hospitalisation"
+                },
+                "limit": [
+                  {
+                    "value": {
+                      "value": 10.0,
+                      "unit": "Percentage of Base Sum Insured"
+                    },
+                    "code": {
+                      "text": "10 Percentage of Base Sum Insured"
                     }
                   }
                 ]
@@ -810,7 +261,7 @@
               {
                 "use": "official",
                 "system": "http://code.workz.com",
-                "value": "urn:uuid:88060a91-221a-4c9d-9e9d-a47777773f01"
+                "value": "urn:uuid:2524710c-35d1-4c97-9eb2-d5be05e62fcf"
               }
             ],
             "type": {
@@ -820,27 +271,185 @@
                   "code": "01",
                   "display": "Individual"
                 }
-              ]
-            }
+              ],
+              "text": "Individual"
+            },
+            "specificCost": [
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "system": "http://snomed.info/sct",
+                      "code": "49122002",
+                      "display": "Ambulance, device"
+                    }
+                  ],
+                  "text": "Ambulance, device"
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "system": "http://snomed.info/sct",
+                          "code": "49122002",
+                          "display": "Ambulance, device"
+                        }
+                      ],
+                      "text": "Ambulance, device"
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "text": "Fullcoverage"
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ],
+                          "text": "In Network"
+                        },
+                        "value": {
+                          "value": 2000.0,
+                          "unit": "INR"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                      "code": "UNK",
+                      "display": "unknown"
+                    }
+                  ],
+                  "text": "Education Grant"
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                          "code": "UNK",
+                          "display": "unknown"
+                        }
+                      ],
+                      "text": "One-time educational grant per child"
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "text": "Fullcoverage"
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ],
+                          "text": "In Network"
+                        },
+                        "value": {
+                          "value": 10.0,
+                          "unit": "%"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "category": {
+                  "coding": [
+                    {
+                      "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                      "code": "UNK",
+                      "display": "unknown"
+                    }
+                  ],
+                  "text": "Cumulative Bonus"
+                },
+                "benefit": [
+                  {
+                    "type": {
+                      "coding": [
+                        {
+                          "system": "http://terminology.hl7.org/CodeSystem/v3-NullFlavor",
+                          "code": "UNK",
+                          "display": "unknown"
+                        }
+                      ],
+                      "text": "Increase in Sum Insured per claim free year"
+                    },
+                    "cost": [
+                      {
+                        "type": {
+                          "text": "Fullcoverage"
+                        },
+                        "applicability": {
+                          "coding": [
+                            {
+                              "system": "http://terminology.hl7.org/CodeSystem/applicability",
+                              "code": "in-network",
+                              "display": "In Network"
+                            }
+                          ],
+                          "text": "In Network"
+                        },
+                        "value": {
+                          "value": 5.0,
+                          "unit": "%"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
     },
     {
-      "fullUrl": "urn:uuid:38961561-893a-4560-9ae7-03c92dda126a",
+      "fullUrl": "urn:uuid:b517a2c6-72e8-443c-b977-af8ba0e87696",
       "resource": {
         "resourceType": "Organization",
-        "id": "38961561-893a-4560-9ae7-03c92dda126a",
+        "id": "b517a2c6-72e8-443c-b977-af8ba0e87696",
         "meta": {
           "profile": [
             "https://nrces.in/ndhm/fhir/r4/StructureDefinition/Organization"
           ]
         },
+        "text": {
+          "status": "generated",
+          "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\" lang=\"en\" xml:lang=\"en\"><p>Organisation: Aditya Birla Health Insurance Co. Limited</p></div>"
+        },
         "identifier": [
           {
             "use": "official",
+            "type": {
+              "coding": [
+                {
+                  "system": "http://terminology.hl7.org/CodeSystem/v2-0203",
+                  "code": "PRN",
+                  "display": "Provider number"
+                }
+              ],
+              "text": "Provider number"
+            },
             "system": "https://www.irdai.gov.in/identifier/insurer",
-            "value": "urn:uuid:b7387fe0-df82-4271-9186-e7f63f9c0918"
+            "value": "Aditya Birla Health Insurance Co. Limited"
           }
         ],
         "name": "Aditya Birla Health Insurance Co. Limited",
@@ -857,7 +466,7 @@
               },
               {
                 "system": "url",
-                "value": "adityabirlahealthinsurance.com"
+                "value": "https://www.adityabirlacapital.com/healthinsurance"
               }
             ]
           }
