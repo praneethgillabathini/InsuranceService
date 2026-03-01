@@ -10,12 +10,15 @@
 ![FHIR R4](https://img.shields.io/badge/FHIR-R4-E15C27?style=flat-square)
 ![NHCX](https://img.shields.io/badge/NHCX-Compliant-1565C0?style=flat-square)
 
+### 🌐 [Live Demo](http://43.205.92.34/)
+
 </div>
 
 ---
 
 ## 📋 Table of Contents
 
+- [🌐 Live Demo](#-live-demo)
 - [Overview](#-overview)
 - [End-to-End Pipeline](#-end-to-end-pipeline)
 - [Why These Tools?](#-why-these-tools)
@@ -27,6 +30,12 @@
 - [Installation & Setup](#-installation--setup)
 - [Running the Application](#-running-the-application)
 - [Project Structure](#-project-structure)
+
+---
+
+## 🌐 Live Demo
+
+You can access the live demo of the application here: **[http://43.205.92.34/](http://43.205.92.34/)**
 
 ---
 
@@ -379,9 +388,10 @@ docker-compose up -d --build
 
 | Service | URL |
 |---|---|
-| **Frontend** | `http://localhost:8001` |
-| **Backend API** | `http://localhost:8082` |
-| **Swagger UI** | `http://localhost:8082/docs` |
+| **Live Demo** | `http://43.205.92.34/` |
+| **Frontend (Local)** | `http://localhost:8001` |
+| **Backend API (Local)** | `http://localhost:8082` |
+| **Swagger UI (Local)** | `http://localhost:8082/docs` |
 
 ### Local Development — One Command
 
